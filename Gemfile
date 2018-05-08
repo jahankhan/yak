@@ -28,6 +28,8 @@ gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'jquery-rails'
+gem 'pry-rails'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -39,7 +41,6 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'better_errors'
-  gem 'pry-rails'
   gem 'binding_of_caller'
 end
 
