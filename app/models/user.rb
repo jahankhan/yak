@@ -1,11 +1,11 @@
 class User < ApplicationRecord
   validates :username, :password_digest, :session_token, :email, presence: true, uniqueness: true
-  validates :avatar_url, presence: true
+  # validates :avatar_url, presence: true
   validates :password, length: { minimum: 6, allow_nil: true }
 
   attr_reader :password
 
-  after_intialize :ensure_session_token
+  after_initialize :ensure_session_token
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
