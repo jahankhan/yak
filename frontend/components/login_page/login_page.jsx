@@ -12,7 +12,15 @@ class LoginPage extends React.Component {
     return (
       <div>
         <LoginNav />
-        <LoginForm />
+        <section>
+        </section>
+        <section>
+          <ul>
+            <li>
+              <h1>Where Work Happens</h1>
+            </li>
+          </ul>
+        </section>
       </div>
     );
   }
