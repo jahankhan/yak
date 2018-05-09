@@ -7,8 +7,7 @@ class LoginNav extends React.Component {
   }
 
   getOppositeForm() {
-    // debugger
-    if(typeof this.props.history === 'undefined') {
+    if(typeof this.props.history === 'undefined' || this.props.history.location.pathname === '/') {
       return <Link to="/login">Sign in</Link>;
     } else {
       if(this.props.history.location.pathname === '/signup') {
