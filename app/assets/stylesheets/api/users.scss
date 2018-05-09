@@ -58,3 +58,28 @@
 .login-nav-list {
   display: flex;
 }
+
+.get-started-form-container {
+  margin-top: 25px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.email-input {
+  border: 1px solid #ebebeb;
+  border-radius: 2px;
+  padding: 20px 0 20px 16px;
+  width: 60%;
+}
+
+.get-started-submit {
+  margin-left: 5px;
+  border-radius: 2px;
+  padding: 20px 20px 20px 20px;
+  width: 25%;
+  background-color: #3f46ad;
+  text-align: center;
+  color: #fff;
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 14px;
+}

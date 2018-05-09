@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import LoginForm from '../session_form/login_container';
+import GetStartedForm from '../session_form/get_started_form_container';
 import LoginNav from './login_navbar';
 
 class HomePage extends React.Component {
@@ -23,6 +23,7 @@ class HomePage extends React.Component {
               measure an A/B test, plan your next office opening, and more, Yak has
               you covered.
             </p>
+            <GetStartedForm />
           </header>
         </main>
       </div>
