@@ -7,7 +7,7 @@ class LoginPage extends React.Component {
 
   render(){
     return (
-      <nav>
+      <nav className="login-navbar">
         <ul>
         </ul>
       </nav>

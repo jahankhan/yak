@@ -12,15 +12,19 @@ class LoginPage extends React.Component {
     return (
       <div>
         <LoginNav />
-        <section>
-        </section>
-        <section>
-          <ul>
-            <li>
-              <h1>Where Work Happens</h1>
-            </li>
-          </ul>
-        </section>
+        <main className="main">
+          <section className="slack-img">
+            <img src={window.staticImages.slack_home} />
+          </section>
+          <header className="signup-body">
+            <h1 className='header-h1'>Where Work Happens</h1>
+            <p className='header-text'>When your team needs to kick off a project, hire a new employee,
+              deploy some code, review a sales contract, finalize next year's budget,
+              measure an A/B test, plan your next office opening, and more, Yak has
+              you covered.
+            </p>
+          </header>
+        </main>
       </div>
     );
   }
