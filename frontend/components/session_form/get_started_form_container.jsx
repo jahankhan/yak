@@ -22,13 +22,15 @@ class GetStartedForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    // debugger
     const user = Object.assign({}, this.state);
-    <Redirect to={{
-      pathname: '/login',
-      state: { email: this.state.email }
-    }} />;
+    this.props.history.push('/login');
   }
 
+  // <Redirect to={{
+  //     pathname: '/login',
+  //     state: { email: this.state.email }
+  //   }}  / > ;
   render() {
     return (
       <div className="get-started-form-container">

@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import GetStartedForm from '../session_form/get_started_form_container';
 import LoginNav from './login_navbar';
 
