@@ -1,0 +1,45 @@
+.login-nav-list > li img {
+  height: 32px;
+  width: 32px;
+}
+
+.login-nav-list > li {
+  margin-right: 24px;
+}
+
+.login-nav-list > li:first-child img{
+  border-radius: 3px;
+}
+
+.login-nav-list > li:last-child > a {
+  border: 2px solid #717274;
+  color: #717274;
+  position: relative;
+  top: 6px;
+  padding: 6px 10px 10px 8px;
+  border-radius: 4px;
+  font-weight: 400;
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 16px;
+}
+
+.nav-logo > a {
+  display: flex;
+  align-items: center;
+}
+
+.nav-logo > a img {
+  height: 32px;
+  width: 32px;
+  /* float: left; */
+  margin-left: 24px;
+  margin-right: 5px;
+}
+
+.nav-logo > a > h1 {
+  display: block;
+  /* font-family: Verdana, Geneva, sans-serif; */
+  font-family: 'Nunito', sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+}

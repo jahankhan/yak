@@ -43,15 +43,42 @@
 .login-form-box > h2, h6, div {
   margin: 0 auto;
 }
+.login-form-box > h2 {
+  margin-top: 30px;
+}
+
+.login-form-box > h2 {
+  margin-bottom: 10px;
+  font-size: 32px;
+}
 .login-form {
   margin: 0 auto;
   width: 74%;
 }
 
-.login-form > input[type="text"]{
+.login-input-container {
   width: 100%;
-  margin: 3px 0 3px 0;
+  margin: 7px 0 3px 0 !important;
   border: 1px solid gray;
   border-radius: 3px;
+  margin: 0;
+  // height: 50px;
+}
+
+.login-input-container > input[type="text"]{
+  width: 100%;
+  margin: 0px 0 0px 8px;
   height: 50px;
+}
+
+.login-form > input[type="submit"] {
+  width: 100%;
+  background-color: #008952;
+  border-radius: 4px;
+  color: #fff;
+  height: 50px;
+  text-align: center;
+  border: 1px solid #008952;
+  margin-top: 12px;
+  margin-bottom: 20px;
 }
