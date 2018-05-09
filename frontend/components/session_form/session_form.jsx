@@ -25,6 +25,7 @@ class SessionForm extends React.Component {
     this.props.processForm(user).then(() => {
       this.setState({username: '', password: '', avatar_url: '', email: ''});
     });
+    this.props.history.push('/channels');
   }
 
   renderErrors() {
@@ -50,7 +51,7 @@ class SessionForm extends React.Component {
       case 'password':
         return 'password';
       case 'Sign Up':
-        return 'Enter your username, email adress, avatar_url, and password';
+        return 'Enter your username, email address, avatar_url, and password';
       case 'Sign In':
         return 'Enter your username and email address';
       default:
