@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import LoginNav from './login_navbar';
-import LoginForm from '../session_form/login_container';
+import SignupForm from '../session_form/signup_container';
 
-class LoginPage extends React.Component {
+class SignupPage extends React.Component {
   constructor(props){
     super(props);
   }
@@ -15,7 +15,7 @@ class LoginPage extends React.Component {
         <LoginNav />
         <main className="main">
           <div className="login-modal">
-            <LoginForm />
+            <SignupForm />
           </div>
         </main>
       </div>
@@ -24,4 +24,4 @@ class LoginPage extends React.Component {
 
 }
 
-export default LoginPage;
+export default SignupPage;

@@ -27,7 +27,7 @@ class GetStartedForm extends React.Component {
     // const user = Object.assign({}, this.state);
     // this.props.history.location.search = this.state.email;
     this.props.history.push({
-      pathname: '/login',
+      pathname: '/signup',
       search: this.state.email
     });
   }

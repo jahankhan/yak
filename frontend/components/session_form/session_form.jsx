@@ -6,7 +6,9 @@ class SessionForm extends React.Component {
     super(props);
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      email: this.props.history.location.search.slice(1),
+      avatar_url: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -37,21 +39,54 @@ class SessionForm extends React.Component {
     );
   }
 
+  renderInputs(field) {
+    return (
+      <label>{field}:
+        <input type="text"
+          value={this.state[field]}
+          onChange={this.update(field)}
+          className="login-input"
+        />
+      </label>
+    );
+  }
+
   render() {
+    let email;
+    let avatar_url;
+    if(this.props.formType === "Sign Up") {
+      email = (
+        <label>Email:
+          <input type="text"
+            value={this.state.email}
+            onChange={this.update('email')}
+            className="login-input"
+          />
+        </label>
+      );
+      // avatar_url = this.renderInputs('avatar_url');
+      avatar_url = (
+        <label>Avatar_Url:
+          <input type="text"
+            value={this.state.avatar_url}
+            onChange={this.update('avatar_url')}
+            className="login-input"
+          />
+        </label>
+      );
+    }
     return (
       <div className="login-form-container">
         <form onSubmit={this.handleSubmit} className="login-form-box">
           {this.renderErrors()}
           <div className="login-form">
             <br/>
-            <label>Username:
-              <input type="text"
-                value={this.state.username}
-                onChange={this.update('username')}
-                className="login-input"
-              />
-            </label>
+            {this.renderInputs('username')}
             <br/>
+            {this.props.formType === "Sign Up" ? email : ''}
+            <br />
+            {avatar_url}
+            <br />
             <label>Password:
               <input type="password"
                 value={this.state.password}
