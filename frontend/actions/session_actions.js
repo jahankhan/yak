@@ -39,7 +39,7 @@ export const signup = user => dispatch => {
     // debugger
     return dispatch(receiveCurrentUser(userData));
   }, err => {
-    // return dispatch(receiveErrors(err.responseJSON));
+    return dispatch(receiveErrors(err.responseJSON));
   });
 };
 
@@ -55,7 +55,7 @@ export const login = user => dispatch => {
   return SessionAPIUtil.login(user).then(userData => {
     return dispatch(receiveCurrentUser(userData));
   }, err => {
-    // return dispatch(receiveErrors(err.responseJSON));
+    return dispatch(receiveErrors(err.responseJSON));
   });
 };
 

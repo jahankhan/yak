@@ -4,6 +4,8 @@
 .signup-main {
   background-color: #f9f9f9;
   min-height: 800px;
+  position: relative;
+  top: 80px;
 }
 //
 // html {
@@ -65,7 +67,7 @@
   // height: 50px;
 }
 
-.login-input-container > input[type="text"]{
+.login-input-container > input[type="text"], input[type="password"]{
   width: 100%;
   margin: 0px 0 0px 8px;
   height: 50px;
@@ -81,4 +83,11 @@
   border: 1px solid #008952;
   margin-top: 12px;
   margin-bottom: 20px;
+}
+
+.session-errors {
+  margin: 0 auto;
+  color: red;
+  text-align: center;
+  margin: 10px 0 10px 0;
 }

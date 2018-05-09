@@ -2,7 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.login-navbar {
+// .login-navbar {
+//   border-bottom: 1px solid lightgray;
+//   height: 70px;
+// }
+
+.login-list-container {
   border-bottom: 1px solid lightgray;
   height: 70px;
 }
@@ -11,9 +16,8 @@
   display: flex;
   background-color: #f9f9f9;
   min-height: 800px;
-  // width: 98%;
-  // margin: 0 auto;
-  // padding-top: 100px;
+  position: relative;
+  top: 140px;
 }
 
 .slack-img {
@@ -40,21 +44,24 @@
 
 .header-text {
   font-size: 20px;
-  // color: #5b5e6d;
   color: #747680;
   line-height: 1.45;
   font-family: Verdana, Geneva, sans-serif;
 }
 
 .login-navbar {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  position: fixed;
+  z-index: 1;
+  height: 70px;
+  width: 100%;
+  background-color: #fff;
+  // margin-bottom: 70px;
 }
 
 .login-list-container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .login-nav-list {

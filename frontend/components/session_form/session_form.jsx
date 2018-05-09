@@ -29,7 +29,7 @@ class SessionForm extends React.Component {
 
   renderErrors() {
     return (
-      <ul>
+      <ul className="session-errors">
         {this.props.errors.map((error, i) => (
           <li key={`error-${i}`}>
             {error}
@@ -58,14 +58,24 @@ class SessionForm extends React.Component {
     }
   }
 
+  getInputType(field) {
+    switch(field) {
+      case 'password':
+        return 'password';
+      default:
+        return 'text';
+    }
+  }
+
   renderInputs(field) {
     return (
       <div className="login-input-container">
-        <input type="text"
+        <input type={this.getInputType(field)}
           value={this.state[field]}
           onChange={this.update(field)}
           className="login-input"
           placeholder={this.getPlaceholderText(field)}
+          required
         />
       </div>
     );
