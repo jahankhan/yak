@@ -23,8 +23,13 @@ class GetStartedForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     // debugger
-    const user = Object.assign({}, this.state);
-    this.props.history.push('/login');
+    // debugger
+    // const user = Object.assign({}, this.state);
+    // this.props.history.location.search = this.state.email;
+    this.props.history.push({
+      pathname: '/login',
+      search: this.state.email
+    });
   }
 
   // <Redirect to={{
