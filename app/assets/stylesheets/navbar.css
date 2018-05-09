@@ -7,6 +7,16 @@
   margin-right: 24px;
 }
 
+.login-nav-list > li:hover {
+  margin-bottom: -5px;
+  border-bottom: 1px solid black;
+}
+
+.login-nav-list > li:last-child:hover {
+  margin-bottom: 0;
+  border-bottom: 0px;
+}
+
 .login-nav-list > li:first-child img{
   border-radius: 3px;
 }
@@ -21,6 +31,12 @@
   font-weight: 400;
   font-family: Verdana, Geneva, sans-serif;
   font-size: 16px;
+}
+
+#sign-btn:hover {
+  border: 2px solid black;
+  color: black;
+  /* background-color: green; */
 }
 
 .nav-logo > a {
@@ -42,5 +58,3 @@
   font-size: 30px;
   font-weight: bold;
 }
-
-/* .login-navbar {} */

@@ -92,4 +92,9 @@
   color: #fff;
   font-family: Verdana, Geneva, sans-serif;
   font-size: 14px;
+  transition: background-color .3s;
+}
+
+.get-started-submit:hover {
+  background-color: #3a2d82;
 }

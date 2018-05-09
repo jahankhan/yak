@@ -72,7 +72,7 @@ class SessionForm extends React.Component {
     if (type === 'Sign Up') {
       return 'up';
     } else {
-      return 'in'
+      return 'in';
     }
   }
 
