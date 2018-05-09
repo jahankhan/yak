@@ -13,7 +13,7 @@ class SignupPage extends React.Component {
     return (
       <div>
         <LoginNav />
-        <main className="main">
+        <main className="signup-main">
           <div className="login-modal">
             <SignupForm />
           </div>

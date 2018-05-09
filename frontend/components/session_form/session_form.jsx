@@ -39,61 +39,48 @@ class SessionForm extends React.Component {
     );
   }
 
+  getPlaceholderText(field) {
+    switch(field) {
+      case 'username':
+        return 'Guest';
+      case 'email':
+        return 'you@example.com';
+      case 'avatar_url':
+        return 'example.com/asd23sdf134s';
+      case 'password':
+        return 'password';
+      default:
+        return '';
+    }
+  }
+
   renderInputs(field) {
     return (
-      <label>{field}:
-        <input type="text"
-          value={this.state[field]}
-          onChange={this.update(field)}
-          className="login-input"
-        />
-      </label>
+      <input type="text"
+        value={this.state[field]}
+        onChange={this.update(field)}
+        className="login-input"
+        placeholder={this.getPlaceholderText(field)}
+      />
     );
   }
 
   render() {
-    let email;
-    let avatar_url;
-    if(this.props.formType === "Sign Up") {
-      email = (
-        <label>Email:
-          <input type="text"
-            value={this.state.email}
-            onChange={this.update('email')}
-            className="login-input"
-          />
-        </label>
-      );
-      // avatar_url = this.renderInputs('avatar_url');
-      avatar_url = (
-        <label>Avatar_Url:
-          <input type="text"
-            value={this.state.avatar_url}
-            onChange={this.update('avatar_url')}
-            className="login-input"
-          />
-        </label>
-      );
-    }
     return (
       <div className="login-form-container">
         <form onSubmit={this.handleSubmit} className="login-form-box">
+          <h2>Sign in to Whatever</h2>
           {this.renderErrors()}
+          <h6>Enter your username, email adress, avatar_url, and password</h6>
           <div className="login-form">
             <br/>
             {this.renderInputs('username')}
             <br/>
-            {this.props.formType === "Sign Up" ? email : ''}
+            {this.props.formType === "Sign Up" ? this.renderInputs('email') : ''}
             <br />
-            {avatar_url}
+            {this.props.formType === "Sign Up" ? this.renderInputs('avatar_url') : ''}
             <br />
-            <label>Password:
-              <input type="password"
-                value={this.state.password}
-                onChange={this.update('password')}
-                className="login-input"
-              />
-            </label>
+            {this.renderInputs('password')}
             <br/>
             <input className="session-submit" type="submit" value={this.props.formType} />
           </div>
