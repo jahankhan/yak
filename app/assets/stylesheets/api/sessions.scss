@@ -79,9 +79,9 @@
   background-color: #008952;
   border-radius: 4px;
   color: #fff;
-  height: 50px;
+  height: 48px;
   text-align: center;
-  border: 1px solid #008952;
+  border: 2px solid #008952;
   margin-top: 12px;
   margin-bottom: 20px;
 }
@@ -91,4 +91,11 @@
   color: red;
   text-align: center;
   margin: 10px 0 10px 0;
+}
+
+.login-form > input[type="submit"]:hover {
+  // height: 49px;
+  // border-top: 0px;
+  border-bottom: 2px solid darkgreen;
+  // background-color: yellow;
 }
