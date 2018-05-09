@@ -1,9 +1,23 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 class LoginNav extends React.Component {
   constructor(props){
     super(props);
+  }
+
+  getOppositeForm() {
+    // debugger
+    if(typeof this.props.history === 'undefined') {
+      return <Link to="/login">Sign in</Link>;
+    } else {
+      if(this.props.history.location.pathname === '/signup') {
+        return <Link to="/login">Sign in</Link>;
+      } else {
+        return <Link to="/signup">Sign up</Link>;
+      }
+    }
+
   }
 
   render(){
@@ -17,7 +31,7 @@ class LoginNav extends React.Component {
             <li><a href="https://www.linkedin.com/in/jahankhan1"><img src={window.staticImages.linkedin} /></a></li>
             <li><a href="https://github.com/jahankhan"><img src={window.staticImages.github} /></a></li>
             <li><a href="mailto:jahanatakhan@gmail.com"><img src={window.staticImages.email} /></a></li>
-            <li><Link to="/login">Sign in</Link></li>
+            <li>{this.getOppositeForm()}</li>
           </ul>
         </div>
       </nav>
@@ -26,4 +40,4 @@ class LoginNav extends React.Component {
 
 }
 
-export default LoginNav;
+export default withRouter(LoginNav);

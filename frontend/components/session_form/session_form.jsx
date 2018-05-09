@@ -68,6 +68,14 @@ class SessionForm extends React.Component {
     }
   }
 
+  getHeader(type) {
+    if (type === 'Sign Up') {
+      return 'up';
+    } else {
+      return 'in'
+    }
+  }
+
   renderInputs(field) {
     return (
       <div className="login-input-container">
@@ -86,7 +94,7 @@ class SessionForm extends React.Component {
     return (
       <div className="login-form-container">
         <form onSubmit={this.handleSubmit} className="login-form-box">
-          <h2>Sign in to Whatever</h2>
+          <h2>Sign {this.getHeader(this.props.formType)} to Whatever</h2>
           {this.renderErrors()}
           <h6>{this.getPlaceholderText(this.props.formType)}</h6>
           <div className="login-form">
