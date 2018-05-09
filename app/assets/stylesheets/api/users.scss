@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .login-navbar {
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid lightgray;
   height: 70px;
 }
 
@@ -42,4 +42,19 @@
   color: #747680;
   line-height: 1.45;
   font-family: Verdana, Geneva, sans-serif;
+}
+
+.login-navbar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-list-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.login-nav-list {
+  display: flex;
 }

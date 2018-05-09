@@ -1,6 +1,6 @@
 import React from 'react';
 
-class LoginPage extends React.Component {
+class LoginNav extends React.Component {
   constructor(props){
     super(props);
   }
@@ -8,12 +8,18 @@ class LoginPage extends React.Component {
   render(){
     return (
       <nav className="login-navbar">
-        <ul>
-        </ul>
+        <div className="login-list-container">
+          <h1>Yak</h1>
+          <ul className="login-nav-list">
+            <li>Linkedin</li>
+            <li>Github</li>
+            <li>Email</li>
+          </ul>
+        </div>
       </nav>
     );
   }
 
 }
 
-export default LoginPage;
+export default LoginNav;
