@@ -1,9 +1,20 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
+import { logout } from '../../actions/session_actions';
 
 class LoginNav extends React.Component {
   constructor(props){
     super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.logout().then(() => {
+      window.scrollTo(0,0);
+      this.props.history.push('/login');
+    });
   }
 
   getOppositeForm() {
@@ -12,8 +23,12 @@ class LoginNav extends React.Component {
     } else {
       if(this.props.history.location.pathname === '/signup') {
         return <Link to="/login" id="sign-btn">Sign in</Link>;
-      } else {
+      } else if (this.props.history.location.pathname === '/login') {
         return <Link to="/signup" id="sign-btn">Sign up</Link>;
+      } else {
+        return (<form onSubmit={this.handleSubmit} className="logout-form">
+          <input id="sign-btn" type="submit" value="Sign out"></input>
+        </form>);
       }
     }
 
@@ -39,4 +54,10 @@ class LoginNav extends React.Component {
 
 }
 
-export default withRouter(LoginNav);
+const mapDispatchToProps = dispatch => {
+  return {
+    logout: () => dispatch(logout()),
+  };
+};
+
+export default withRouter(connect(null, mapDispatchToProps)(LoginNav));
