@@ -23,7 +23,7 @@ export const createChannel = (channel) => {
 export const addUserToChannel = (userId, channelId) => {
   return $.ajax({
     method: 'POST',
-    url: 'api/channels',
-    data: { channelId, userId }
+    url: 'api/channel_users',
+    data: { channel_id: channelId, user_id: userId }
   });
 };

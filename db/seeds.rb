@@ -7,6 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 User.destroy_all
 Channel.destroy_all
-User.create!(username: 'test', password: 'starwars', avatar_url: 'google.com', email: 'test123@gmail.com')
-Channel.create!(title: 'testchannel')
-Channel.create!(title: 'testchannel2')
+ChannelUser.destroy_all
+u = User.create!(username: 'test', password: 'starwars', avatar_url: 'google.com', email: 'test123@gmail.com')
+c1 = Channel.create!(title: 'testchannel')
+c2 = Channel.create!(title: 'testchannel2')
+c3 = Channel.create!(title: 'testchannel3')
+ChannelUser.create!(user_id: u.id, channel_id: c1.id)
+ChannelUser.create!(user_id: u.id, channel_id: c2.id)
