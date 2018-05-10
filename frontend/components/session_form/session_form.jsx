@@ -23,7 +23,9 @@ class SessionForm extends React.Component {
     e.preventDefault();
     const user = Object.assign({}, this.state);
     this.props.processForm(user).then(() => {
+      window.scrollTo(0,0);
       this.setState({username: '', password: '', avatar_url: '', email: ''});
+
       this.props.history.push('/channels');
     });
 

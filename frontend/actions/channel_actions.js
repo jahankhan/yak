@@ -5,6 +5,7 @@ export const RECEIVE_CHANNELS = 'RECEIVE_CHANNELS';
 export const RECEIVE_CHANNEL_ERRORS = 'RECEIVE_CHANNEL_ERRORS';
 
 export const receiveCurrentChannel = currentChannel => {
+
   return {
     type: RECEIVE_CURRENT_CHANNEL,
     currentChannel

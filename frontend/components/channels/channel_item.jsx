@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addUserToChannel } from '../../actions/channel_actions';
 
@@ -9,17 +10,26 @@ class ChannelItem extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit(){
-    this.props.addUserToChannel(this.props.channel.id);
+  handleSubmit(e){
+    e.preventDefault();
+    this.props.addUserToChannel(this.props.channel.id).then(() => {
+      // console.log(this);
+      this.props.history.push(`/channels/${this.props.channel.id}/messages`);
+    });
+    // console.log(this);
   }
 
   render() {
     // debugger
     return (
-      <form onSubmit={this.handleSubmit} className="channel-list-item-form">
-        <h2>{this.props.channel.title}</h2>
-        <input className="join-channel-btn" type="submit" value="Join"></input>
-      </form>
+      <div className="channel-item-form-container">
+        <form onSubmit={this.handleSubmit} className="channel-list-item-form">
+          <div className='flex-channel-items'>
+            <h2>{this.props.channel.title}</h2>
+            <input className="join-channel-btn" type="submit" value="Join"></input>
+          </div>
+        </form>
+      </div>
     );
   }
 }
@@ -36,4 +46,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(ChannelItem);
+export default withRouter(connect(null, mapDispatchToProps)(ChannelItem));

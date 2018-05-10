@@ -1,4 +1,9 @@
 class Api::ChannelUsersController < ApplicationController
+  # def index
+  #   debugger
+  #   @users = User.all.where('channel_id = ?', params[:channel_id])
+  # end
+
   def create
     @channel_user = ChannelUser.new(channel_user_params)
     @channel_user[:user_id] = current_user.id
@@ -9,6 +14,8 @@ class Api::ChannelUsersController < ApplicationController
       render json: errors, status: 422
     end
   end
+
+
 
   private
 

@@ -5,7 +5,7 @@ export default (state = [], action) => {
   let newState = [];
   switch (action.type) {
     case RECEIVE_CHANNEL_ERRORS:
-      debugger
+      
       return action.errors;
     case RECEIVE_CURRENT_CHANNEL:
       return [];

@@ -32,7 +32,8 @@ class ChannelList extends React.Component {
   render() {
     // debugger
     return (
-      <ul>
+      <ul className="channel-list">
+        <h1>Join a Channel</h1>
         {this.createListItems()}
       </ul>
     );

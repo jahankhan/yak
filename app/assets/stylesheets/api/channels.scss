@@ -1,3 +1,65 @@
 // Place all the styles related to the api/channels controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.channel-item-form-container {
+  text-align: center;
+  // border-bottom: 1px solid gray;
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 14px;
+}
+
+.channel-list {
+  margin: 0 auto;
+  background-color: #fff;
+  width: 500px;
+  height: 400px;
+  border: 1px solid lightgray;
+  border-radius: 4px;
+  overflow-y: auto;
+  // box-shadow:
+}
+
+.channel-list > h1 {
+  font-size: 26px;
+  font-weight: 700;
+  // text-align: center;
+  margin: 20px 0 30px 14px;
+  // margin-top: 20px;
+  // margin-left: 10px;
+}
+
+.join-channel-btn {
+  // margin: 20px 0 0 5px;
+  margin-right: 12px;
+  border-radius: 2px;
+  padding: 5px;
+  width: 25%;
+  background-color: #3f46ad;
+  text-align: center;
+  color: #fff;
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 14px;
+  transition: background-color .3s;
+  // margin-bottom: -5px;
+  border-bottom: 1px solid gray;
+}
+
+.flex-channel-items > h2 {
+  display: block;
+  margin-left: 14px;
+}
+
+.channel-list-item-form {
+  margin: 0 auto;
+}
+
+.flex-channel-items {
+
+  display: flex;
+  margin-top: 10px;
+  justify-content: space-between;
+  border-bottom: 1px solid lightgray;
+  align-items: center;
+  padding-bottom: 12px;
+}

@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
 
   def require_not_logged_in
     if current_user
-      render json: { errors: ['Can\'t be logged in'] }, status: 401
+      render json: ['Can\'t be logged in'], status: 401
       # redirect_to '/'
     end
   end
