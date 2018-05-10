@@ -41,8 +41,8 @@ export const getAllChannels = () => dispatch => {
   });
 };
 
-export const getChannel = () => dispatch => {
-  return ChannelAPIUtil.getChannel().then(channelData => {
+export const getChannel = (channelId) => dispatch => {
+  return ChannelAPIUtil.getChannel(channelId).then(channelData => {
     return dispatch(receiveCurrentChannel(channelData));
   }, err => {
     return dispatch(receiveErrors(err.responseJSON));
@@ -50,8 +50,8 @@ export const getChannel = () => dispatch => {
 };
 
 export const addUserToChannel = channelId => dispatch => {
-  return ChannelAPIUtil.addUserToChannel(channelId).then(() => {
-    return ;
+  return ChannelAPIUtil.addUserToChannel(channelId).then((channelData) => {
+    return dispatch(getChannel(channelData.channel_id));
   }, err => {
     return dispatch(receiveErrors(err.responseJSON));
   });

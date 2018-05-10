@@ -1,9 +1,9 @@
 class Api::ChannelUsersController < ApplicationController
   def create
     @channel_user = ChannelUser.new(channel_user_params)
-    @channel_user = current_user.id
+    @channel_user[:user_id] = current_user.id
     if @channel_user.save
-      render json: 'Created channel user'
+      render json: { channel_id: @channel_user.channel_id }
     else
       errors = @channel_user.errors.full_messages
       render json: errors, status: 422

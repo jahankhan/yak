@@ -1,5 +1,6 @@
 import React from 'react';
 import LoginNav from '../login_page/login_navbar';
+import ChannelList from './channel_list';
 
 class HomePage extends React.Component {
   constructor(props){
@@ -11,7 +12,7 @@ class HomePage extends React.Component {
       <div>
         <LoginNav />
         <main className="main">
-          <h1>ChannelPage</h1>
+          <ChannelList />
         </main>
       </div>
     );
