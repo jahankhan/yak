@@ -48,3 +48,11 @@ export const getChannel = () => dispatch => {
     return dispatch(receiveErrors(err.responseJSON));
   });
 };
+
+export const addUserToChannel = channelId => dispatch => {
+  return ChannelAPIUtil.addUserToChannel(channelId).then(() => {
+    return ;
+  }, err => {
+    return dispatch(receiveErrors(err.responseJSON));
+  });
+};
