@@ -1,6 +1,6 @@
 class Api::MessagesController < ApplicationController
   def index
-    @messages = Message.all
+    @messages = Message.all.where('channel_id = ?', params[:channel_id])
   end
 
   def show
@@ -20,6 +20,6 @@ class Api::MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:body, :author_id, :user_id, :dm)
+    params.require(:message).permit(:body, :author_id, :channel_id, :dm)
   end
 end

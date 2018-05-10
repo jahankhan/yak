@@ -4,12 +4,15 @@ import Root from './components/root';
 import configureStore from './store/store';
 import { login, logout, signup } from './actions/session_actions';
 import { createChannel, getAllChannels, getChannel } from './actions/channel_actions';
+import { createMessage, getAllMessages } from './actions/message_actions';
 window.login = login;
 window.logout = logout;
 window.signup = signup;
 window.createChannel = createChannel;
 window.getAllChannels = getAllChannels;
 window.getChannel = getChannel;
+window.createMessage = createMessage;
+window.getAllMessages = getAllMessages;
 document.addEventListener('DOMContentLoaded', () => {
   let store;
   if (window.currentUser) {
