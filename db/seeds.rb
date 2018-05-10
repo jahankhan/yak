@@ -8,3 +8,5 @@
 User.destroy_all
 Channel.destroy_all
 User.create!(username: 'test', password: 'starwars', avatar_url: 'google.com', email: 'test123@gmail.com')
+Channel.create!(title: 'testchannel')
+Channel.create!(title: 'testchannel2')
