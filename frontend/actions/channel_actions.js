@@ -32,3 +32,19 @@ export const createChannel = channel => dispatch => {
     return dispatch(receiveErrors(err.responseJSON));
   });
 };
+
+export const getAllChannels = () => dispatch => {
+  return ChannelAPIUtil.getAllChannels().then(channelsData => {
+    return dispatch(receiveChannels(channelsData));
+  }, err => {
+    return dispatch(receiveErrors(err.responseJSON));
+  });
+};
+
+export const getChannel = () => dispatch => {
+  return ChannelAPIUtil.getChannel().then(channelData => {
+    return dispatch(receiveCurrentChannel(channelData));
+  }, err => {
+    return dispatch(receiveErrors(err.responseJSON));
+  });
+};
