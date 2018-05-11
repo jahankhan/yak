@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import ChannelItem from './channel_item';
 import { selectAllChannels } from '../../reducers/selectors';
 import { getAllChannels } from '../../actions/channel_actions';
@@ -7,12 +8,19 @@ import { getAllChannels } from '../../actions/channel_actions';
 class ChannelList extends React.Component {
   constructor(props) {
     super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
     // if (this.props.)
     // debugger
     this.props.getAllChannels();
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.history.push('/channels/new');
+
   }
 
   createListItems() {
@@ -33,7 +41,10 @@ class ChannelList extends React.Component {
     // debugger
     return (
       <ul className="channel-list">
-        <h1>Join a Channel</h1>
+        <div className="channel-list-header-container">
+          <h1>Join a Channel</h1>
+          <button onClick={this.handleSubmit}>Create</button>
+        </div>
         {this.createListItems()}
       </ul>
     );
@@ -55,4 +66,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ChannelList);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ChannelList));

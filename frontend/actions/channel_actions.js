@@ -27,6 +27,7 @@ export const receiveErrors = errors => {
 };
 
 export const createChannel = channel => dispatch => {
+  // debugger
   return ChannelAPIUtil.createChannel(channel).then(channelData => {
     return dispatch(receiveCurrentChannel(channelData));
   }, err => {

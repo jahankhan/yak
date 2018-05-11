@@ -1,5 +1,5 @@
 class Api::ChannelsController < ApplicationController
-  
+
   before_action :require_logged_in
 
   def index
@@ -12,6 +12,7 @@ class Api::ChannelsController < ApplicationController
 
   def create
     @channel = Channel.new(channel_params)
+    # debugger
     if @channel.save
       render :show
     else

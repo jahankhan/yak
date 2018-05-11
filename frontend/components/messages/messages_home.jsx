@@ -31,7 +31,6 @@ class MessagePage extends React.Component {
   }
 
   render(){
-    debugger
     let channelTitle;
     if(typeof this.props.channel === 'undefined') {
       // debugger

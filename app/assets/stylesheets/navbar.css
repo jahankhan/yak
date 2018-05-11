@@ -3,13 +3,20 @@
   width: 32px;
 }
 
+.login-nav-list > li img:hover {
+  /* dont forget to figure this out */
+  /* padding-bottom: 4px; */
+  /* border-bottom: 1px solid black; */
+}
+
 .login-nav-list > li {
   margin-right: 24px;
 }
 
 .login-nav-list > li:hover {
-  margin-bottom: -5px;
-  border-bottom: 1px solid black;
+  /* margin-bottom: -10px; */
+  /* padding-bottom: 8px; */
+  /* border-bottom: 1px solid black; */
 }
 
 .login-nav-list > li:last-child:hover {
