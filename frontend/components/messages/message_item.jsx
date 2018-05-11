@@ -8,9 +8,20 @@ class MessageItem extends React.Component {
   render() {
     // debugger
     return (
-      <li className="message-item">
-        <h2>{this.props.message.body}</h2>
-      </li>
+      <div className="message-item">
+        <div className="avatar-img">
+          AVT
+        </div>
+        <div className="message-item-content">
+          <div className="message-user-info">
+            <span className="message-author">{this.props.message.author_id}</span>
+            <span className="message-timestamp">{this.props.message.created_at}</span>
+          </div>
+          <div className="message-body">
+            <span>{this.props.message.body}</span>
+          </div>
+        </div>
+      </div>
 
     );
   }

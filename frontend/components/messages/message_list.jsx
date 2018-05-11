@@ -24,9 +24,9 @@ class MessageList extends React.Component {
 
   render() {
     return (
-      <ul className="message-list">
+      <div className="message-list">
         {this.createListItems()}
-      </ul>
+      </div>
     );
   }
 }

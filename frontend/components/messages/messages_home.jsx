@@ -2,15 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
 import MessageList from './message_list';
-import { getChannel } from '../../actions/channel_actions';
 import MessageNav from './message_navbar';
 import MessageChannelNav from './message_channel_navbar';
+import MessageComposer from './message_composer';
 
 class MessagePage extends React.Component {
   constructor(props){
     super(props);
     this.handleLogout = this.handleLogout.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleLogout(e) {
@@ -20,60 +19,26 @@ class MessagePage extends React.Component {
       this.props.history.push('/login');
     });
   }
-  handleSubmit(e) {
-    e.preventDefault();
-    this.props.logout().then(() => {
-      window.scrollTo(0,0);
-      this.props.history.push('/login');
-    });
-  }
-
-  componentDidMount() {
-    this.props.getChannel(this.props.match.params.channelId);
-  }
 
   render(){
-    let channelTitle;
-    if(typeof this.props.channel === 'undefined') {
-      // debugger
-      channelTitle = '';
-
-    } else {
-      // debugger
-      channelTitle = this.props.channel.title;
-    }
     return (
       <main className="messages-main">
         <MessageNav />
-        <MessageChannelNav />
-        <MessageList />
-        <div className="message-form-input-container">
-          <form onSubmit={this.handleSubmit} className="logout-form">
-            <input className="message-form-input" type="text" placeholder={`Message #${channelTitle}`}></input>
-          </form>
-        </div>
-        <div>
-          <form onSubmit={this.handleLogout} className="logout-form">
-            <input className="logout-btn" type="submit" value="Sign out"></input>
-          </form>
+        <div className="messages-content-container">
+          <MessageChannelNav />
+          <MessageList />
+          <MessageComposer />
         </div>
       </main>
     );
   }
 }
+// <div>
+//   <form onSubmit={this.handleLogout} className="logout-form">
+//     <input className="logout-btn" type="submit" value="Sign out"></input>
+//   </form>
+// </div>
 
-const mapStateToProps = (state, ownProps) => {
-  // debugger
-  const channelId = ownProps.match.params.channelId;
-  return {
-    channel: state.entities.channels[channelId]
-  };
-};
 
-const mapDispatchToProps = dispatch => {
-  return {
-    getChannel: channelId => dispatch(getChannel(channelId)),
-  };
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(MessagePage);
+export default MessagePage;

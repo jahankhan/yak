@@ -1,0 +1,55 @@
+.message-navbar {
+  display: flex;
+  background-color: #4D394B;
+  flex-direction: column;
+  height: 100%;
+  width: 220px;
+  min-width: 220px;
+  color: #ab9ba9;
+  z-index: 2;
+}
+
+.user-menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.team-name {
+  margin: 10px 0 0px 16px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.username {
+  margin-left: 30px;
+  font-size: 12px;
+}
+
+.channel-col {
+  //dont forget to remove
+  border-top: 1px solid black;
+  margin-left: 16px;
+  line-height: 1.6;
+}
+
+.channel-menu {
+  margin-top: 40px;
+}
+
+.dm-menu {
+  margin-top: 30px;
+
+}
+
+.channel-menu-item {
+  display: block;
+  // font-size: 14px;
+  margin-left: 4px
+}
+
+.dm-menu-item {
+  display: block;
+  // font-size: 14px;
+  margin-left: 4px
+}
