@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addUserToChannel } from '../../actions/channel_actions';
+import { addUserToChannel, setActiveChannel } from '../../actions/channel_actions';
 
 class ChannelItem extends React.Component {
   constructor(props) {
@@ -14,7 +14,11 @@ class ChannelItem extends React.Component {
     e.preventDefault();
     this.props.addUserToChannel(this.props.channel.id).then(() => {
       // console.log(this);
-      this.props.history.push(`/channels/${this.props.channel.id}/messages`);
+      // debugger
+      this.props.setActiveChannel(this.props.current_user.id, this.props.channel.id).then(() => {
+        this.props.history.push(`/channels/${this.props.channel.id}/messages`);
+      });
+
     });
     // console.log(this);
   }
@@ -33,17 +37,17 @@ class ChannelItem extends React.Component {
     );
   }
 }
-// const mapStateToProps = ({ entities }) => {
-//   return {
-//     channel: entities.channels,
-//     formType: 'Sign In'
-//   };
-// };
-
-const mapDispatchToProps = dispatch => {
+const mapStateToProps = ({ session }) => {
   return {
-    addUserToChannel: channelId => dispatch(addUserToChannel(channelId))
+    current_user: session
   };
 };
 
-export default withRouter(connect(null, mapDispatchToProps)(ChannelItem));
+const mapDispatchToProps = dispatch => {
+  return {
+    addUserToChannel: channelId => dispatch(addUserToChannel(channelId)),
+    setActiveChannel: (userId, channelId) => dispatch(setActiveChannel(userId, channelId))
+  };
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ChannelItem));

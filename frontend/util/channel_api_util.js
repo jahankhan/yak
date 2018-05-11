@@ -27,10 +27,3 @@ export const addUserToChannel = (channelId) => {
     data: {channel_user: { channel_id: channelId }}
   });
 };
-
-// export const getChannelUsers = (channelId) => {
-//   return $.ajax({
-//     method: 'GET',
-//     url: 'api/channel_users'
-//   });
-// };

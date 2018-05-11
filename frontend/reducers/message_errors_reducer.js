@@ -5,7 +5,6 @@ export default (state = [], action) => {
   let newState = [];
   switch (action.type) {
     case RECEIVE_MESSAGE_ERRORS:
-      debugger
       return action.errors;
     case RECEIVE_MESSAGES:
     case RECEIVE_MESSAGE:

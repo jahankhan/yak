@@ -1,4 +1,5 @@
 import * as ChannelAPIUtil from '../util/channel_api_util';
+import * as UserAPIUtil from '../util/user_api_util';
 
 export const RECEIVE_CURRENT_CHANNEL = 'RECEIVE_CURRENT_CHANNEL';
 export const RECEIVE_CHANNELS = 'RECEIVE_CHANNELS';
@@ -53,8 +54,19 @@ export const getChannel = (channelId) => dispatch => {
 
 export const addUserToChannel = channelId => dispatch => {
   return ChannelAPIUtil.addUserToChannel(channelId).then((channelData) => {
-    return dispatch(getChannel(channelData.channel_id));
+    // debugger
+    // return dispatch(getChannel(channelData.channel_id));
   }, err => {
     return dispatch(receiveErrors(err.responseJSON));
+  });
+};
+
+export const setActiveChannel = (userId, channelId) => dispatch => {
+  // debugger
+  return UserAPIUtil.setActiveChannel(userId, channelId).then((userData) => {
+
+    return dispatch(getChannel(userData.active_channel));
+  }, err => {
+    // return dispatch(receiveErrors(err.responseJSON));
   });
 };

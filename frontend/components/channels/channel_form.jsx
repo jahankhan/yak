@@ -33,7 +33,7 @@ class ChannelForm extends React.Component {
         <h4>Enter title</h4>
         <form onSubmit={this.handleSubmit}>
           <div className="channel-form">
-            <input type="text" onChange={this.update} placeholder="example channel" value={this.state.title}></input>
+            <input required type="text" onChange={this.update} placeholder="example channel" value={this.state.title}></input>
             <input className="join-channel-btn" type="submit" value="Create"></input>
           </div>
         </form>

@@ -12,9 +12,8 @@ class Api::ChannelsController < ApplicationController
 
   def create
     @channel = Channel.new(channel_params)
-    # debugger
+
     if @channel.save
-      # debugger
       render :show
     else
       render json: @channel.errors.full_messages, status: 422

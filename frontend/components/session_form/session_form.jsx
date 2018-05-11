@@ -22,11 +22,15 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.processForm(user).then(() => {
+    this.props.processForm(user).then((response) => {
       window.scrollTo(0,0);
       this.setState({username: '', password: '', avatar_url: '', email: ''});
+      if(response.currentUser.active_channel){
+        this.props.history.push(`/channels/${response.currentUser.active_channel}/messages`);
+      } else {
+        this.props.history.push('/channels');
+      }
 
-      this.props.history.push('/channels');
     });
 
   }
