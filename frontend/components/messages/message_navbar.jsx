@@ -1,9 +1,20 @@
 import React from 'react';
+import { connect } from 'react-redux';
+// import { getChannel } from
 
 class MessageNav extends React.Component {
   constructor(props) {
     super(props);
   }
+
+  // renderChannels() {
+  //   if(typeof this.props.channels === 'undefined'){
+  //     return '';
+  //   } else {
+  //     return this.props.channels.map()
+  //   }
+  //
+  // }
 
   render() {
     // debugger
@@ -31,16 +42,15 @@ class MessageNav extends React.Component {
     );
   }
 }
-// // const mapStateToProps = ({ entities }) => {
-// //   return {
-// //     message: entities.messages,
-// //     formType: 'Sign In'
-// //   };
-// // };
+// const mapStateToProps = ({ entities }, ownProps) => {
+//   return {
+//     channels: entities.users.channelIds
+//   };
+// };
 //
 // const mapDispatchToProps = dispatch => {
 //   return {
-//     addUserToMessage: messageId => dispatch(addUserToMessage(messageId))
+//     getChannel: channelId => dispatch(getChannel(channelId))
 //   };
 // };
 
