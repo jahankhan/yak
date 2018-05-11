@@ -16,7 +16,7 @@ class MessageNav extends React.Component {
       });
     }
   }
-
+// {this.renderChannels()}
   render() {
     // debugger
     return (
@@ -30,7 +30,7 @@ class MessageNav extends React.Component {
             <span>Channels</span>
             <span className="channel-menu-item"># 2018-03-19-nyc</span>
             <span className="channel-menu-item"># general</span>
-            {this.renderChannels()}
+
           </div>
           <div className="dm-menu">
             <span>Direct Messages</span>
@@ -49,7 +49,7 @@ const mapStateToProps = (state, ownProps) => {
   const user = state.entities.users[state.session.id];
   return {
     user,
-    channels: selectUserChannels(state, user)
+    // channels: selectUserChannels(state, user)
   };
 };
 

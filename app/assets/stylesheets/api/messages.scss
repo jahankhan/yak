@@ -47,7 +47,11 @@
 
 .message-footer {
   min-height: 70px;
-
+  width: 84%;
+  position: fixed;
+  bottom:0px;
+  z-index: 2;
+  background-color: #fff;
 }
 
 .message-footer-container {
