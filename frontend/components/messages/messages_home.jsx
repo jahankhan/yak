@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
 import MessageList from './message_list';
 import { getChannel } from '../../actions/channel_actions';
+import MessageNav from './message_navbar';
+import MessageChannelNav from './message_channel_navbar';
 
 class MessagePage extends React.Component {
   constructor(props){
@@ -41,14 +43,20 @@ class MessagePage extends React.Component {
       channelTitle = this.props.channel.title;
     }
     return (
-      <main>
+      <main className="messages-main">
+        <MessageNav />
+        <MessageChannelNav />
         <MessageList />
+        <div className="message-form-input-container">
           <form onSubmit={this.handleSubmit} className="logout-form">
             <input className="message-form-input" type="text" placeholder={`Message #${channelTitle}`}></input>
           </form>
-        <form onSubmit={this.handleLogout} className="logout-form">
-          <input className="logout-btn" type="submit" value="Sign out"></input>
-        </form>
+        </div>
+        <div>
+          <form onSubmit={this.handleLogout} className="logout-form">
+            <input className="logout-btn" type="submit" value="Sign out"></input>
+          </form>
+        </div>
       </main>
     );
   }

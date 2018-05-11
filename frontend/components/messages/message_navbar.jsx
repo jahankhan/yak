@@ -1,6 +1,6 @@
 import React from 'react';
 
-class MessageItem extends React.Component {
+class MessageNav extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -8,9 +8,12 @@ class MessageItem extends React.Component {
   render() {
     // debugger
     return (
-      <li className="message-item">
-        <h2>{this.props.message.body}</h2>
-      </li>
+      <nav className="message-navbar">
+        <div className="message-navbar-inner">
+          <ul className="message-navbar-list">
+          </ul>
+        </div>
+      </nav>
 
     );
   }
@@ -28,5 +31,4 @@ class MessageItem extends React.Component {
 //   };
 // };
 
-export default MessageItem;
-//
+export default MessageNav;
