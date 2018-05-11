@@ -4,6 +4,8 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6, allow_nil: true }
 
   attr_reader :password
+  has_many :channel_users
+  has_many :channels, through: :channel_users
 
   after_initialize :ensure_session_token
 

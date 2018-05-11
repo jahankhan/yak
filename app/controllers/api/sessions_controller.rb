@@ -1,4 +1,7 @@
 class Api::SessionsController < ApplicationController
+
+  before_action :require_not_logged_in, only: :create
+  
   def create
     @user = User.find_by_credentials(
       params[:user][:username],

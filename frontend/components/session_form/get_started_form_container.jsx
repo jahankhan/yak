@@ -1,5 +1,5 @@
-import { connect } from 'react-redux';
 import React from 'react';
+import { connect } from 'react-redux';
 import { Route, Link, Redirect } from 'react-router-dom';
 import { login } from '../../actions/session_actions';
 import SessionForm from './session_form';
@@ -26,6 +26,7 @@ class GetStartedForm extends React.Component {
     // debugger
     // const user = Object.assign({}, this.state);
     // this.props.history.location.search = this.state.email;
+    window.scrollTo(0,0);
     this.props.history.push({
       pathname: '/signup',
       search: this.state.email
