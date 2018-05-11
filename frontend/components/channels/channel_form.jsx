@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { createChannel } from '../../actions/channel_actions';
 
 class ChannelForm extends React.Component {
@@ -20,7 +21,10 @@ class ChannelForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     // debugger
-    this.props.createChannel({title: this.state.title});
+    this.props.createChannel({title: this.state.title}).then((data) => {
+      // debugger
+      this.props.history.push(`/channels/${data.currentChannel.id}/messages`);
+    });
   }
   render(){
     return (
@@ -45,4 +49,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(ChannelForm);
+export default withRouter(connect(null, mapDispatchToProps)(ChannelForm));
