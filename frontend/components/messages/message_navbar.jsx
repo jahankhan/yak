@@ -1,20 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// import { getChannel } from
+import { selectUserChannels } from '../../reducers/selectors';
 
 class MessageNav extends React.Component {
   constructor(props) {
     super(props);
   }
 
-  // renderChannels() {
-  //   if(typeof this.props.channels === 'undefined'){
-  //     return '';
-  //   } else {
-  //     return this.props.channels.map()
-  //   }
-  //
-  // }
+  renderChannels() {
+    if(typeof this.props.channels === 'undefined'){
+      return '';
+    } else {
+      return this.props.channels.map(channel => {
+        return <span className="channel-menu-item"># {channel.title}</span>;
+      });
+    }
+  }
 
   render() {
     // debugger
@@ -29,6 +30,7 @@ class MessageNav extends React.Component {
             <span>Channels</span>
             <span className="channel-menu-item"># 2018-03-19-nyc</span>
             <span className="channel-menu-item"># general</span>
+            {this.renderChannels()}
           </div>
           <div className="dm-menu">
             <span>Direct Messages</span>
@@ -42,16 +44,19 @@ class MessageNav extends React.Component {
     );
   }
 }
-// const mapStateToProps = ({ entities }, ownProps) => {
-//   return {
-//     channels: entities.users.channelIds
-//   };
-// };
-//
+const mapStateToProps = (state, ownProps) => {
+  // debugger
+  const user = state.entities.users[state.session.id];
+  return {
+    user,
+    channels: selectUserChannels(state, user)
+  };
+};
+
 // const mapDispatchToProps = dispatch => {
 //   return {
-//     getChannel: channelId => dispatch(getChannel(channelId))
+//     selectUserChannels: user => dispatch(getChannel(channelId))
 //   };
 // };
 
-export default MessageNav;
+export default connect(mapStateToProps)(MessageNav);
