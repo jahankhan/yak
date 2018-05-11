@@ -1,5 +1,5 @@
 import merge from 'lodash/merge';
-
+import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
 import {
   RECEIVE_CURRENT_CHANNEL,
   RECEIVE_CHANNELS
@@ -9,7 +9,10 @@ import {
 const channelsReducer = (state = {}, action) => {
   Object.freeze(state);
   // debugger
+  // debugger
   switch(action.type) {
+    case RECEIVE_CURRENT_USER:
+      return merge({}, state, action.channels);
     case RECEIVE_CURRENT_CHANNEL:
       return merge({}, state, { [action.currentChannel.id]: action.currentChannel });
     case RECEIVE_CHANNELS:

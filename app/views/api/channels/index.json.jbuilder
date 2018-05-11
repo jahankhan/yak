@@ -1,5 +1,5 @@
 @channels.each do |channel|
   json.set! channel.id do
-    json.extract! channel, :id, :title, :topic
+    json.partial! 'api/channels/channel', channel: channel
   end
 end

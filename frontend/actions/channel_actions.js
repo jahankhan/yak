@@ -5,11 +5,11 @@ export const RECEIVE_CURRENT_CHANNEL = 'RECEIVE_CURRENT_CHANNEL';
 export const RECEIVE_CHANNELS = 'RECEIVE_CHANNELS';
 export const RECEIVE_CHANNEL_ERRORS = 'RECEIVE_CHANNEL_ERRORS';
 
-export const receiveCurrentChannel = currentChannel => {
-
+export const receiveCurrentChannel = payload => {
   return {
     type: RECEIVE_CURRENT_CHANNEL,
-    currentChannel
+    currentChannel: payload.channels,
+    users: payload.users
   };
 };
 
@@ -45,6 +45,7 @@ export const getAllChannels = () => dispatch => {
 };
 
 export const getChannel = (channelId) => dispatch => {
+  // debugger
   return ChannelAPIUtil.getChannel(channelId).then(channelData => {
     return dispatch(receiveCurrentChannel(channelData));
   }, err => {
@@ -53,6 +54,7 @@ export const getChannel = (channelId) => dispatch => {
 };
 
 export const addUserToChannel = channelId => dispatch => {
+  // debugger
   return ChannelAPIUtil.addUserToChannel(channelId).then((channelData) => {
     // debugger
     // return dispatch(getChannel(channelData.channel_id));
@@ -65,7 +67,7 @@ export const setActiveChannel = (userId, channelId) => dispatch => {
   // debugger
   return UserAPIUtil.setActiveChannel(userId, channelId).then((userData) => {
 
-    return dispatch(getChannel(userData.active_channel));
+    return dispatch(getChannel(userData.users.active_channel));
   }, err => {
     // return dispatch(receiveErrors(err.responseJSON));
   });
