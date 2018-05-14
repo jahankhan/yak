@@ -27,3 +27,5 @@ export const addUserToChannel = (channelId) => {
     data: {channel_user: { channel_id: channelId }}
   });
 };
+
+// export const getUserChannels
