@@ -29,6 +29,12 @@ class MessagePage extends React.Component {
     // debugger
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.match.params.channelId !== nextProps.match.params.channelId) {
+      this.props.getChannel(nextProps.match.params.channelId);
+    }
+  }
+
   render() {
     return (
       <main className="messages-main">

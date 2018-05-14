@@ -39,7 +39,7 @@ class MessageChannelNav extends React.Component {
   }
 }
 const mapStateToProps = (state, ownProps) => {
-  debugger
+  // debugger
   return {
     channel: state.entities.channels[ownProps.match.params.channelId]
   };

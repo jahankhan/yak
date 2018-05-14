@@ -29,8 +29,34 @@
 .channel-col {
   //dont forget to remove
   border-top: 1px solid black;
-  margin-left: 16px;
+  // margin-left: 16px;
   line-height: 1.6;
+}
+
+.dm-menu-item, .channel-menu-item {
+  margin-left: 18px;
+}
+//
+.channel-menu > a {
+  display: block;
+}
+
+.side-nav-header-link {
+  display: block;
+  margin-left: 16px;
+}
+
+.side-nav-header-link:hover {
+  color: #fff;
+}
+
+.side-nav-headers:hover {
+
+}
+
+.channel-menu-item-link:hover {
+
+  background-color: #3E313C;
 }
 
 .channel-menu {
@@ -45,7 +71,7 @@
 .channel-menu-item {
   display: block;
   // font-size: 14px;
-  margin-left: 4px
+  // margin-left: 4px
 }
 
 .dm-menu-item {

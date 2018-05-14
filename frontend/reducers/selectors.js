@@ -13,3 +13,7 @@ export const selectUserChannels = (state, user) => {
 export const selectChannelUsers = (state, channel) => {
   return channel ? channel.userIds.map(userId => state.entities.users[userId]) : [];
 };
+
+// export const selectChannelMessages = (state, channel) => {
+//   return channel ?
+// }

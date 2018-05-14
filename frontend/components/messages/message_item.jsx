@@ -17,7 +17,7 @@ class MessageItem extends React.Component {
     if(typeof this.props.users === 'undefined') {
       user = '';
     } else {
-      // debugger
+      debugger
       user = this.props.users[this.props.message.author_id];
       avatar = user.avatar_url;
     }

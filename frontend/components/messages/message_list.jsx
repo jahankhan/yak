@@ -13,15 +13,27 @@ class MessageList extends React.Component {
   }
 
   componentDidMount() {
-    debugger
+    // debugger
     // this.props.getChannel(this.props.match.params.channelId);
     this.props.getUser(this.props.user.id).then(() => {
       this.props.getChannel(this.props.match.params.channelId).then(() => {
-        this.props.getAllMessages(this.props.match.params.channelId);
+        this.props.getAllMessages(this.props.match.params.channelId).then(() => {
+          const messageListDiv = document.getElementById("message-list");
+          messageListDiv.scrollTop = messageListDiv.scrollHeight;
+        });
       });
     });
+  }
 
-
+  componentWillReceiveProps(nextProps) {
+    if (this.props.match.params.channelId !== nextProps.match.params.channelId) {
+      this.props.getChannel(nextProps.match.params.channelId).then(() => {
+        this.props.getAllMessages(nextProps.match.params.channelId).then(() => {
+          const messageListDiv = document.getElementById("message-list");
+          messageListDiv.scrollTop = messageListDiv.scrollHeight;
+        });
+      });
+    }
   }
 
   createListItems() {
@@ -37,25 +49,30 @@ class MessageList extends React.Component {
   }
 
   render() {
+    // debugger
+
+
     return (
-      <div className="message-list">
+      <div className="message-list" id="message-list">
         {this.createListItems()}
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   // let messages;
   // if(Object.keys(state.entities.messages).length === 0) {
   //   messages = {};
   // } else {
   //   messages = state.entities.messages;
   // }
+  // const channel = state.entities.channels[ownProps.match.params.channelId] || {};
   const user = state.entities.users[state.session.id] || {};
   return {
     messages: state.entities.messages,
-    user
+    user,
+    // channel
   };
 };
 

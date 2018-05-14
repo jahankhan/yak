@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link, withRouter } from 'react-router-dom';
 import { getChannel } from '../../actions/channel_actions';
 import { selectUserChannels } from '../../reducers/selectors';
 
@@ -14,8 +15,16 @@ class MessageNav extends React.Component {
     } else {
       // debugger
       return this.props.channels.map(channel => {
-        return <span key={channel.id} className="channel-menu-item"># {channel.title}</span>;
+        return <Link key={channel.id} to={`/channels/${channel.id}/messages`} className="channel-menu-item-link"><span key={channel.id} className="channel-menu-item"># {channel.title}</span></Link>;
       });
+    }
+  }
+
+  renderUser() {
+    if(typeof this.props.user === 'undefined') {
+      return '';
+    } else {
+      return this.props.user.username;
     }
   }
   // componentDidMount() {
@@ -31,17 +40,18 @@ class MessageNav extends React.Component {
       <nav className="message-navbar">
         <div className="user-menu">
           <div className="team-name">App Academy</div>
-          <div className="username">Jahan Khan</div>
+          <div className="username">{this.renderUser()}</div>
         </div>
         <div className="channel-col">
           <div className="channel-menu">
-            <span>Channels</span>
-
+            <Link to="/channels" className="side-nav-header-link">
+              <span className="side-nav-headers">Channels</span>
+            </Link>
             {this.renderChannels()}
 
           </div>
           <div className="dm-menu">
-            <span>Direct Messages</span>
+            <span className="side-nav-headers">Direct Messages</span>
             <span className="dm-menu-item">slackbot</span>
             <span className="dm-menu-item">Jahan Khan</span>
             <span className="dm-menu-item">Guest User</span>
@@ -68,4 +78,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps)(MessageNav);
+export default withRouter(connect(mapStateToProps)(MessageNav));
