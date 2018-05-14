@@ -3,6 +3,9 @@ class User < ApplicationRecord
   # validates :avatar_url, presence: true
   validates :password, length: { minimum: 6, allow_nil: true }
 
+  has_attached_file :avatar, default_url: "missing.png"
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+
   attr_reader :password
   has_many :channel_users
   has_many :channels, through: :channel_users
