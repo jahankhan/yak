@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { getChannel } from '../../actions/channel_actions';
 import { selectUserChannels } from '../../reducers/selectors';
 
 class MessageNav extends React.Component {
@@ -11,12 +12,19 @@ class MessageNav extends React.Component {
     if(typeof this.props.channels === 'undefined'){
       return '';
     } else {
+      // debugger
       return this.props.channels.map(channel => {
-        return <span className="channel-menu-item"># {channel.title}</span>;
+        return <span key={channel.id} className="channel-menu-item"># {channel.title}</span>;
       });
     }
   }
+  // componentDidMount() {
+  //   // debugger
+  //   // this.props.getChannel(this)
+  // }
 // {this.renderChannels()}
+// <span className="channel-menu-item"># 2018-03-19-nyc</span>
+// <span className="channel-menu-item"># general</span>
   render() {
     // debugger
     return (
@@ -28,8 +36,8 @@ class MessageNav extends React.Component {
         <div className="channel-col">
           <div className="channel-menu">
             <span>Channels</span>
-            <span className="channel-menu-item"># 2018-03-19-nyc</span>
-            <span className="channel-menu-item"># general</span>
+
+            {this.renderChannels()}
 
           </div>
           <div className="dm-menu">
@@ -46,17 +54,18 @@ class MessageNav extends React.Component {
 }
 const mapStateToProps = (state, ownProps) => {
   // debugger
-  const user = state.entities.users[state.session.id];
+  const user = state.entities.users[state.session.id] || {};
+  // debugger
   return {
     user,
-    // channels: selectUserChannels(state, user)
+    channels: selectUserChannels(state, user)
   };
 };
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     selectUserChannels: user => dispatch(getChannel(channelId))
-//   };
-// };
+const mapDispatchToProps = dispatch => {
+  return {
+    getChannel: channelId => dispatch(getChannel(channelId))
+  };
+};
 
 export default connect(mapStateToProps)(MessageNav);

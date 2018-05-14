@@ -1,8 +1,18 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 class MessageChannelNav extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  renderChannel() {
+    if (typeof this.props.channel === 'undefined') {
+      return '';
+    } else {
+      return `${this.props.channel.title}`;
+    }
   }
 
   render() {
@@ -10,7 +20,7 @@ class MessageChannelNav extends React.Component {
     return (
       <header className="message-channel-navbar">
         <div className="message-channel-navbar-left">
-          <button className="channel-navbar-btn">#2018-03-19-nyc</button>
+          <button className="channel-navbar-btn">#{this.renderChannel()}</button>
           <div className="channel-navbar-small-btns">
             <span className="channel-small-items">s</span>
             <span className="channel-small-items">numU</span>
@@ -28,12 +38,12 @@ class MessageChannelNav extends React.Component {
     );
   }
 }
-// // const mapStateToProps = ({ entities }) => {
-// //   return {
-// //     message: entities.messages,
-// //     formType: 'Sign In'
-// //   };
-// // };
+const mapStateToProps = (state, ownProps) => {
+  debugger
+  return {
+    channel: state.entities.channels[ownProps.match.params.channelId]
+  };
+};
 //
 // const mapDispatchToProps = dispatch => {
 //   return {
@@ -41,4 +51,4 @@ class MessageChannelNav extends React.Component {
 //   };
 // };
 
-export default MessageChannelNav;
+export default withRouter(connect(mapStateToProps)(MessageChannelNav));

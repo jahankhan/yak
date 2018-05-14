@@ -43,13 +43,13 @@ export const signup = user => dispatch => {
   });
 };
 
-// export const login = user => dispatch => (
-//   SessionAPIUtil.login(user).then(user => (
-//     dispatch(receiveCurrentUser(user))
-//   ), err => (
-//     dispatch(receiveErrors(err.responseJSON))
-//   ))
-// );
+export const getUser = userId => dispatch => (
+  UserAPIUtil.getUser(userId).then(userData => (
+    dispatch(receiveCurrentUser(userData))
+  ), err => (
+    dispatch(receiveErrors(err.responseJSON))
+  ))
+);
 
 export const login = user => dispatch => {
   return SessionAPIUtil.login(user).then(userData => {

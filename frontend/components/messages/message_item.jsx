@@ -6,6 +6,10 @@ class MessageItem extends React.Component {
     super(props);
   }
 
+  // formatTime(time) {
+  //
+  // }
+
   render() {
     let user;
     let avatar;
@@ -13,7 +17,7 @@ class MessageItem extends React.Component {
     if(typeof this.props.users === 'undefined') {
       user = '';
     } else {
-      debugger
+      // debugger
       user = this.props.users[this.props.message.author_id];
       avatar = user.avatar_url;
     }
@@ -27,8 +31,8 @@ class MessageItem extends React.Component {
             <span className="message-author">{user.username}</span>
             <span className="message-timestamp">{this.props.message.created_at}</span>
           </div>
-          <div className="message-body">
-            <span>{this.props.message.body}</span>
+          <div className="message-body-container">
+            <span className="message-body">{this.props.message.body}</span>
           </div>
         </div>
       </div>

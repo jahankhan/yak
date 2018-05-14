@@ -1,13 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { logout } from '../../actions/session_actions';
 import MessageList from './message_list';
 import MessageNav from './message_navbar';
 import MessageChannelNav from './message_channel_navbar';
 import MessageComposer from './message_composer';
+import { getChannel } from '../../actions/channel_actions';
+import { getUser } from '../../actions/session_actions';
 
 class MessagePage extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.handleLogout = this.handleLogout.bind(this);
   }
@@ -20,7 +23,13 @@ class MessagePage extends React.Component {
     });
   }
 
-  render(){
+  componentDidMount() {
+    // debugger
+    //
+    // debugger
+  }
+
+  render() {
     return (
       <main className="messages-main">
         <MessageNav />
@@ -33,12 +42,22 @@ class MessagePage extends React.Component {
     );
   }
 }
-// <div>
-//   <form onSubmit={this.handleLogout} className="logout-form">
-//     <input className="logout-btn" type="submit" value="Sign out"></input>
-//   </form>
-// </div>
+
+const mapStateToProps = (state, ownProps) => {
+  const user = state.entities.users[state.session.id] || {};
+  return {
+    user
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  // debugger
+  return {
+    getChannel: channelId => dispatch(getChannel(channelId)),
+    getUser: userId => dispatch(getUser(userId))
+  };
+};
 
 
 
-export default MessagePage;
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MessagePage));

@@ -4,6 +4,9 @@ export const selectAllChannels = state => values(state.entities.channels);
 
 export const selectUserChannels = (state, user) => {
   // debugger
+  if (Object.keys(state.entities.channels).length === 0 || typeof user.channelIds === 'undefined') {
+    return [];
+  }
   return user ? user.channelIds.map(channelId => state.entities.channels[channelId]) : [];
 };
 

@@ -7,6 +7,13 @@ export const signup = user => {
   });
 };
 
+export const getUser = userId => {
+  return $.ajax({
+    method: 'GET',
+    url: `/api/users/${userId}`
+  });
+};
+
 export const setActiveChannel = (userId, channelId) => {
   return $.ajax({
     method:'PATCH',
