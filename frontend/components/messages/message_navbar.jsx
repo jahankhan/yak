@@ -10,11 +10,12 @@ class MessageNav extends React.Component {
   }
 
   renderChannels() {
-    if(typeof this.props.channels === 'undefined'){
+    if(typeof this.props.channels === 'undefined' || typeof this.props.channels === 'undefined'){
       return '';
     } else {
       // debugger
       return this.props.channels.map(channel => {
+        if(typeof channel === 'undefined') return;
         return <NavLink key={channel.id} to={`/channels/${channel.id}/messages`} activeClassName="selected" className="channel-menu-item-link"><span key={channel.id} className="channel-menu-item"># {channel.title}</span></NavLink>;
       });
     }
@@ -30,6 +31,7 @@ class MessageNav extends React.Component {
     } else {
       // debugger
       return this.props.dms.map(dm => {
+        if(typeof dm === 'undefined') return;
         if (typeof dm.userIds === 'undefined') return '';
         return <NavLink key={dm.id} to={`/channels/${dm.id}/messages`} activeClassName="selected" className="channel-menu-item-link"><span key={dm.id} className="channel-menu-item"> {this.renderDmTitle(dm.userIds)}</span></NavLink>;
       });

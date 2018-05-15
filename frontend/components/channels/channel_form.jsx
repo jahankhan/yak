@@ -35,6 +35,7 @@ class ChannelForm extends React.Component {
   //   <input type="channel-form-checkbox" />
   //   <span className="channel-form-slider"></span>
   // </label>
+  //
   render(){
     return (
       <div className='channel-form-main'>
