@@ -1,7 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { createChannel } from '../../actions/channel_actions';
+import {
+  createChannel,
+  addUserToChannel,
+  setActiveChannel
+} from '../../actions/channel_actions';
 
 class ChannelForm extends React.Component {
   constructor(props){
@@ -22,11 +26,15 @@ class ChannelForm extends React.Component {
     e.preventDefault();
     // debugger
     this.props.createChannel({title: this.state.title}).then((data) => {
-      // debugger
       const keys = Object.keys(data.currentChannel);
-      // const length = keys.length;
       const currentChannel = keys[keys.length-1];
-      this.props.history.push(`/channels/${currentChannel}/messages`);
+      this.props.addUserToChannel(currentChannel).then(() => {
+        this.props.setActiveChannel(this.props.current_user.id, currentChannel).then(() => {
+          this.props.history.push(`/channels/${currentChannel}/messages`);
+        });
+      });
+
+      // this.props.history.push(`/channels/${currentChannel}/messages`);
     });
   }
   render(){
@@ -46,10 +54,18 @@ class ChannelForm extends React.Component {
   }
 }
 
+const mapStateToProps = ({ session }) => {
+  return {
+    current_user: session
+  };
+};
+
 const mapDispatchToProps = dispatch => {
   return {
+    addUserToChannel: channelId => dispatch(addUserToChannel(channelId)),
+    setActiveChannel: (userId, channelId) => dispatch(setActiveChannel(userId, channelId)),
     createChannel: channel => dispatch(createChannel(channel))
   };
 };
 
-export default withRouter(connect(null, mapDispatchToProps)(ChannelForm));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ChannelForm));
