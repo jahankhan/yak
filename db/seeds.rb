@@ -11,9 +11,9 @@ ChannelUser.destroy_all
 Message.destroy_all
 u = User.create!(username: 'test', password: 'starwars', avatar_url: 'google.com', email: 'test123@gmail.com')
 u2 = User.create!(username: 'test2', password: 'starwars', avatar_url: 'google.com', email: 'test223@gmail.com' )
-c1 = Channel.create!(title: 'testchannel')
-c2 = Channel.create!(title: 'testchannel2')
-c3 = Channel.create!(title: 'testchannel3')
+c1 = Channel.create!(title: 'testchannel', dm: false)
+c2 = Channel.create!(title: 'testchannel2', dm: false)
+c3 = Channel.create!(title: 'testchannel3', dm: false)
 c4 = Channel.create!(title: 'dmchannel', dm: true)
 ChannelUser.create!(user_id: u.id, channel_id: c1.id)
 ChannelUser.create!(user_id: u.id, channel_id: c2.id)
