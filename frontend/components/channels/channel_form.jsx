@@ -1,11 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import {
-  createChannel,
-  addUserToChannel,
-  setActiveChannel
-} from '../../actions/channel_actions';
 
 class ChannelForm extends React.Component {
   constructor(props){
@@ -37,10 +31,21 @@ class ChannelForm extends React.Component {
       // this.props.history.push(`/channels/${currentChannel}/messages`);
     });
   }
+  // <label className="channel-form-switch">
+  //   <input type="channel-form-checkbox" />
+  //   <span className="channel-form-slider"></span>
+  // </label>
   render(){
     return (
       <div className='channel-form-main'>
         <h1>Create Channel</h1>
+        <div className="channel-switch-conatiner">
+          <label className="channel-form-switch">
+            <input className="channel-form-checkbox" type="checkbox" />
+            <span className="channel-form-slider"></span>
+          </label>
+        </div>
+
         <h4>Enter title</h4>
         <form onSubmit={this.handleSubmit}>
           <div className="channel-form">
@@ -48,24 +53,9 @@ class ChannelForm extends React.Component {
             <input className="join-channel-btn" type="submit" value="Create"></input>
           </div>
         </form>
-
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ session }) => {
-  return {
-    current_user: session
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    addUserToChannel: channelId => dispatch(addUserToChannel(channelId)),
-    setActiveChannel: (userId, channelId) => dispatch(setActiveChannel(userId, channelId)),
-    createChannel: channel => dispatch(createChannel(channel))
-  };
-};
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ChannelForm));
+export default withRouter(ChannelForm);

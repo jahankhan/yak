@@ -24,3 +24,14 @@ export const setActiveChannel = (userId, channelId) => {
            }
   });
 };
+
+export const setAvatar = (formData, userId) => {
+  debugger
+  return $.ajax({
+    method:'PATCH',
+    url: `api/users/${userId}`,
+    contentType: false,
+    processData: false,
+    data: formData
+  });
+};

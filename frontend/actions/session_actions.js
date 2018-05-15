@@ -64,3 +64,11 @@ export const logout = () => dispatch => {
     return dispatch(logoutCurrentUser());
   });
 };
+
+export const setAvatar = (formData, userId) => dispatch => {
+  return UserAPIUtil.setAvatar(formData, userId).then(userData => {
+    return dispatch(receiveCurrentUser(userData));
+  }, err => {
+    return dispatch(receiveErrors(err.responseJSON));
+  });
+};

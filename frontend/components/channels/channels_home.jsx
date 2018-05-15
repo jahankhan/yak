@@ -1,7 +1,7 @@
 import React from 'react';
 import LoginNav from '../login_page/login_navbar';
 import ChannelList from './channel_list';
-import ChannelForm from './channel_form';
+import ChannelForm from './channel_form_container';
 
 class ChannelPage extends React.Component {
   constructor(props){

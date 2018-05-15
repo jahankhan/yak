@@ -31,7 +31,7 @@ class MessageNav extends React.Component {
       // debugger
       return this.props.dms.map(dm => {
         if (typeof dm.userIds === 'undefined') return '';
-        return <NavLink key={dm.id} to={`/channels/${dm.id}/messages`} activeClassName="selected" className="channel-menu-item-link"><span key={dm.id} className="channel-menu-item"># {this.renderDmTitle(dm.userIds)}</span></NavLink>;
+        return <NavLink key={dm.id} to={`/channels/${dm.id}/messages`} activeClassName="selected" className="channel-menu-item-link"><span key={dm.id} className="channel-menu-item"> {this.renderDmTitle(dm.userIds)}</span></NavLink>;
       });
     }
   }
