@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -11,6 +11,8 @@ class SessionForm extends React.Component {
       avatar_url: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.loginGuest = this.loginGuest.bind(this);
+    this.demoUser = this.demoUser.bind(this);
   }
 
   update(field) {
@@ -30,8 +32,42 @@ class SessionForm extends React.Component {
       } else {
         this.props.history.push('/channels');
       }
-
     });
+  }
+
+  loginGuest(login, password, i, j, button) {
+
+    // debugger
+    if (i < login.length) {
+      // debugger
+      let string = this.state.username + login[i];
+      this.setState({username: string}, () => {
+        window.setTimeout(() => {
+          this.loginGuest(login, password, ++i, j, button);
+        }, 75);
+      });
+    } else {
+      if( j === password.length) {
+        button.click();
+        return;
+      }
+      let string = this.state.password + password[j];
+      this.setState({password: string}, () => {
+        window.setTimeout(() => {
+          this.loginGuest(login, password, i, ++j, button);
+        }, 75);
+      });
+    }
+    //
+  }
+
+  demoUser() {
+    const login = "test";
+    const password = "starwars";
+    const button = document.getElementById("session-submit-btn");
+    let i = 0;
+    let j = 0;
+    this.loginGuest(login, password, i, j, button);
 
   }
 
@@ -97,6 +133,8 @@ class SessionForm extends React.Component {
     );
   }
 
+
+
   render() {
     return (
       <div className="login-form-container">
@@ -110,9 +148,10 @@ class SessionForm extends React.Component {
             {this.props.formType === "Sign Up" ? this.renderInputs('email') : ''}
             {this.props.formType === "Sign Up" ? this.renderInputs('avatar_url') : ''}
             {this.renderInputs('password')}
-            <input className="session-submit" type="submit" value={this.props.formType} />
+            <input id="session-submit-btn" className="session-submit" type="submit" value={this.props.formType} />
           </div>
         </form>
+        <button className="demo-user-btn" onClick={this.demoUser}>Log in as guest user</button>
       </div>
     );
   }
