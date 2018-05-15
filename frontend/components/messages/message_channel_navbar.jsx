@@ -7,11 +7,17 @@ class MessageChannelNav extends React.Component {
     super(props);
   }
 
+  renderDmTitle(arr) {
+    return arr.map(id => this.props.users[id].username).join(', ');
+  }
+
   renderChannel() {
     if (typeof this.props.channel === 'undefined') {
       return '';
+    } else if(this.props.channel.dm === false) {
+      return `#${this.props.channel.title}`;
     } else {
-      return `${this.props.channel.title}`;
+      return this.renderDmTitle(this.props.channel.userIds);
     }
   }
 
@@ -20,7 +26,7 @@ class MessageChannelNav extends React.Component {
     return (
       <header className="message-channel-navbar">
         <div className="message-channel-navbar-left">
-          <button className="channel-navbar-btn">#{this.renderChannel()}</button>
+          <button className="channel-navbar-btn">{this.renderChannel()}</button>
           <div className="channel-navbar-small-btns">
             <span className="channel-small-items">s</span>
             <span className="channel-small-items">numU</span>
@@ -41,7 +47,8 @@ class MessageChannelNav extends React.Component {
 const mapStateToProps = (state, ownProps) => {
   // debugger
   return {
-    channel: state.entities.channels[ownProps.match.params.channelId]
+    channel: state.entities.channels[ownProps.match.params.channelId],
+    users: state.entities.users
   };
 };
 //

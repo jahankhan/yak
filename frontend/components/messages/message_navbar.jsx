@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link, withRouter } from 'react-router-dom';
+import { NavLink, Link, withRouter } from 'react-router-dom';
 import { getChannel } from '../../actions/channel_actions';
-import { selectUserChannels } from '../../reducers/selectors';
+import { selectUserChannels, selectUserDMs } from '../../reducers/selectors';
 
 class MessageNav extends React.Component {
   constructor(props) {
@@ -15,7 +15,23 @@ class MessageNav extends React.Component {
     } else {
       // debugger
       return this.props.channels.map(channel => {
-        return <Link key={channel.id} to={`/channels/${channel.id}/messages`} className="channel-menu-item-link"><span key={channel.id} className="channel-menu-item"># {channel.title}</span></Link>;
+        return <NavLink key={channel.id} to={`/channels/${channel.id}/messages`} activeClassName="selected" className="channel-menu-item-link"><span key={channel.id} className="channel-menu-item"># {channel.title}</span></NavLink>;
+      });
+    }
+  }
+
+  renderDmTitle(arr) {
+    return arr.map(id => this.props.users[id].username).join(', ');
+  }
+
+  renderDMs() {
+    if(typeof this.props.dms === 'undefined'){
+      return '';
+    } else {
+      // debugger
+      return this.props.dms.map(dm => {
+        if (typeof dm.userIds === 'undefined') return '';
+        return <NavLink key={dm.id} to={`/channels/${dm.id}/messages`} activeClassName="selected" className="channel-menu-item-link"><span key={dm.id} className="channel-menu-item"># {this.renderDmTitle(dm.userIds)}</span></NavLink>;
       });
     }
   }
@@ -34,6 +50,9 @@ class MessageNav extends React.Component {
 // {this.renderChannels()}
 // <span className="channel-menu-item"># 2018-03-19-nyc</span>
 // <span className="channel-menu-item"># general</span>
+// <span className="dm-menu-item">slackbot</span>
+// <span className="dm-menu-item">Jahan Khan</span>
+// <span className="dm-menu-item">Guest User</span>
   render() {
     // debugger
     return (
@@ -51,10 +70,10 @@ class MessageNav extends React.Component {
 
           </div>
           <div className="dm-menu">
-            <span className="side-nav-headers">Direct Messages</span>
-            <span className="dm-menu-item">slackbot</span>
-            <span className="dm-menu-item">Jahan Khan</span>
-            <span className="dm-menu-item">Guest User</span>
+            <Link to="/channels" className="side-nav-header-link">
+              <span className="side-nav-headers">Direct Messages</span>
+            </Link>
+            {this.renderDMs()}
           </div>
         </div>
       </nav>
@@ -68,7 +87,9 @@ const mapStateToProps = (state, ownProps) => {
   // debugger
   return {
     user,
-    channels: selectUserChannels(state, user)
+    channels: selectUserChannels(state, user),
+    dms: selectUserDMs(state, user),
+    users: state.entities.users
   };
 };
 

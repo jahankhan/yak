@@ -23,7 +23,10 @@ class ChannelForm extends React.Component {
     // debugger
     this.props.createChannel({title: this.state.title}).then((data) => {
       // debugger
-      this.props.history.push(`/channels/${data.currentChannel.id}/messages`);
+      const keys = Object.keys(data.currentChannel);
+      // const length = keys.length;
+      const currentChannel = keys[keys.length-1];
+      this.props.history.push(`/channels/${currentChannel}/messages`);
     });
   }
   render(){

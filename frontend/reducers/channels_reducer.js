@@ -14,7 +14,9 @@ const channelsReducer = (state = {}, action) => {
     case RECEIVE_CURRENT_USER:
       return merge({}, state, action.channels);
     case RECEIVE_CURRENT_CHANNEL:
-      return merge({}, state, { [action.currentChannel.id]: action.currentChannel });
+      // return merge({}, state, { [action.currentChannel.id]: action.currentChannel });
+      // debugger
+      return merge({}, state, action.currentChannel)
     case RECEIVE_CHANNELS:
       // debugger
       return action.channels;
