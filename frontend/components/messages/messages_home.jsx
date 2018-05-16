@@ -8,25 +8,39 @@ import MessageChannelNav from './message_channel_navbar';
 import MessageComposer from './message_composer';
 import { getChannel, setActiveChannel } from '../../actions/channel_actions';
 import { getUser } from '../../actions/session_actions';
+import { receiveMessage } from '../../actions/message_actions';
 
 class MessagePage extends React.Component {
   constructor(props) {
     super(props);
-    this.handleLogout = this.handleLogout.bind(this);
+    // this.componentWillMount = this.componentWillMount.bind(this);
+    // App.cable.subscriptions.create = App.cable.subscriptions.create.bind(this);
   }
 
-  handleLogout(e) {
-    e.preventDefault();
-    this.props.logout().then(() => {
-      window.scrollTo(0,0);
-      this.props.history.push('/login');
-    });
-  }
 
-  componentDidMount() {
+
+  componentWillMount() {
     // debugger
-    //
-    // debugger
+    const that = this;
+    if (typeof App !== 'undefined'){
+      // debugger
+      App.room = App.cable.subscriptions.create("RoomChannel", {
+          connected: function() {},
+          disconnected: function() {},
+          received: function(data) {
+            // debugger
+            that.props.receiveMessage(JSON.parse(data['message']));
+            const messageListDiv = document.getElementById("message-list");
+            messageListDiv.scrollTop = messageListDiv.scrollHeight;
+          },
+          speak: function(message) {
+            // debugger
+            return this.perform('speak', {
+              message: message
+            });
+          }
+      });
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -71,7 +85,8 @@ const mapDispatchToProps = dispatch => {
   return {
     getChannel: channelId => dispatch(getChannel(channelId)),
     setActiveChannel: (userId, channelId) => dispatch(setActiveChannel(userId, channelId)),
-    getUser: userId => dispatch(getUser(userId))
+    getUser: userId => dispatch(getUser(userId)),
+    receiveMessage: message => dispatch(receiveMessage(message))
   };
 };
 

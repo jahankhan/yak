@@ -1,15 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import LoginNav from '../login_page/login_navbar';
 import ChannelList from './channel_list';
 import ChannelForm from './channel_form_container';
+
 
 class ChannelPage extends React.Component {
   constructor(props){
     super(props);
     this.handleBack = this.handleBack.bind(this);
   }
+
+
 
   getListOrForm(){
     // debugger
@@ -47,5 +50,11 @@ const mapStateToProps = (state, ownProps) => {
     currentUser: state.entities.users[state.session.id]
   };
 };
+//
+// const mapDispatchToProps = dispatch => {
+//   return {
+//
+//   };
+// };
 
-export default connect(mapStateToProps)(ChannelPage);
+export default withRouter(connect(mapStateToProps)(ChannelPage));

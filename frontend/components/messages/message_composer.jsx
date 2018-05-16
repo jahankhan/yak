@@ -22,13 +22,21 @@ class MessageComposer extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("message[body]", this.state.body);
-    formData.append("message[author_id]", this.props.current_user.id);
-    formData.append("message[channel_id]", this.props.match.params.channelId);
-    this.props.createMessage(formData).then(() => {
-      this.setState({body: ''});
-    });
+    // const formData = new FormData();
+    // formData.append("message[body]", this.state.body);
+    // formData.append("message[author_id]", this.props.current_user.id);
+    // formData.append("message[channel_id]", this.props.match.params.channelId);
+    const message = {
+      body: this.state.body,
+      author_id: this.props.current_user.id,
+      channel_id: this.props.match.params.channelId
+    };
+    // debugger
+    App.room.speak(message);
+    this.setState({body: ''});
+    // this.props.createMessage(formData).then(() => {
+    //   this.setState({body: ''});
+    // });
   }
 
   updateBody(e) {

@@ -28,7 +28,8 @@ export const receiveErrors = errors => {
 
 export const createMessage = message => dispatch => {
   return MessageAPIUtil.createMessage(message).then(messageData => {
-    return dispatch(receiveMessage(messageData));
+    // return dispatch(receiveMessage(messageData));
+    return ;
   }, err => {
     return dispatch(receiveErrors(err.responseJSON));
   });

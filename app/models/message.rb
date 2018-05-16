@@ -8,4 +8,6 @@ class Message < ApplicationRecord
   foreign_key: :author_id
 
   belongs_to :channel
+
+  after_create_commit {MessageBroadcastJob.perform_now self}
 end
