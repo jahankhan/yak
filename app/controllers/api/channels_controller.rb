@@ -12,7 +12,9 @@ class Api::ChannelsController < ApplicationController
 
   def create
     @channel = Channel.new(channel_params)
-
+    if params[:channel][:title] == '-bad-'
+      @channel.title = "-#{Channel.last.id + 1}-"
+    end
     if @channel.save
       render :show
     else

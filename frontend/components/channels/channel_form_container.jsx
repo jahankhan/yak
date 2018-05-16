@@ -5,6 +5,7 @@ import ChannelForm from './channel_form';
 import {
   createChannel,
   addUserToChannel,
+  addOtherUserToChannel,
   setActiveChannel
 } from '../../actions/channel_actions';
 
@@ -18,6 +19,7 @@ const mapStateToProps = ({ session }) => {
 const mapDispatchToProps = dispatch => {
   return {
     addUserToChannel: channelId => dispatch(addUserToChannel(channelId)),
+    addOtherUserToChannel: (username, channelId) => dispatch(addOtherUserToChannel(username, channelId)),
     setActiveChannel: (userId, channelId) => dispatch(setActiveChannel(userId, channelId)),
     createChannel: channel => dispatch(createChannel(channel))
   };

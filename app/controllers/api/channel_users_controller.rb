@@ -6,7 +6,13 @@ class Api::ChannelUsersController < ApplicationController
 
   def create
     @channel_user = ChannelUser.new(channel_user_params)
-    @channel_user[:user_id] = current_user.id
+    if params[:channel_user][:username]
+      # debugger
+      user = User.find_by(username: params[:channel_user][:username])
+      @channel_user[:user_id] = user.id
+    else
+      @channel_user[:user_id] = current_user.id
+    end
     if @channel_user.save
       render json: { channel_id: @channel_user.channel_id }
     else

@@ -13,11 +13,7 @@ import { receiveMessage } from '../../actions/message_actions';
 class MessagePage extends React.Component {
   constructor(props) {
     super(props);
-    // this.componentWillMount = this.componentWillMount.bind(this);
-    // App.cable.subscriptions.create = App.cable.subscriptions.create.bind(this);
   }
-
-
 
   componentWillMount() {
     // debugger
@@ -47,15 +43,11 @@ class MessagePage extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.match.params.channelId !== nextProps.match.params.channelId) {
       this.props.setActiveChannel(this.props.user.id, nextProps.match.params.channelId).then((data) => {
-        // debugger
         this.props.getUser(this.props.user.id).then(() => {
           const keys = Object.keys(data.currentChannel);
           const currentChannel = keys[keys.length-1];
-          // debugger
-          // this.props.setActiveChannel(this.props.user.id, currentChannel);
           this.props.getChannel(currentChannel);
         });
-
       });
     }
   }

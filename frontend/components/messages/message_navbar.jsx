@@ -110,7 +110,7 @@ class MessageNav extends React.Component {
 
           </div>
           <div className="dm-menu">
-            <Link to="/channels" className="side-nav-header-link">
+            <Link to="/channels/new" className="side-nav-header-link">
               <span className="side-nav-headers">Direct Messages</span>
             </Link>
             {this.renderDMs()}

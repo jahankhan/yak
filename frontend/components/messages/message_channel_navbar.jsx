@@ -8,6 +8,9 @@ class MessageChannelNav extends React.Component {
   }
 
   renderDmTitle(arr) {
+    if (typeof arr === 'undefined'){
+      return '';
+    }
     return arr.map(id => this.props.users[id].username).join(', ');
   }
 

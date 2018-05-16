@@ -63,6 +63,16 @@ export const addUserToChannel = channelId => dispatch => {
   });
 };
 
+export const addOtherUserToChannel = (username, channelId) => dispatch => {
+  // debugger
+  return ChannelAPIUtil.addOtherUserToChannel(username, channelId).then((channelData) => {
+    // debugger
+    // return dispatch(getChannel(channelData.channel_id));
+  }, err => {
+    return dispatch(receiveErrors(err.responseJSON));
+  });
+};
+
 export const setActiveChannel = (userId, channelId) => dispatch => {
   // debugger
   return UserAPIUtil.setActiveChannel(userId, channelId).then((userData) => {
