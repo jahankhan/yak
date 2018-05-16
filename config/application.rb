@@ -24,5 +24,6 @@ module Yak
         :s3_host_name => "s3.#{ENV["s3_region"]}.amazonaws.com"
       }
     }
+    config.time_zone = 'Eastern Time (US & Canada)'
   end
 end
