@@ -34,24 +34,20 @@ class MessageList extends React.Component {
         });
       });
     }
+
+    // const messageListDiv = document.getElementById("message-list");
+    // messageListDiv.scrollTop = messageListDiv.scrollHeight;
   }
 
   createListItems() {
-    // if(typeof this.props.messages === 'undefined'){
-    //   return [];
-    // }
     return (
       Object.keys(this.props.messages).map((messageId) => {
-        // debugger
         return <MessageItem key={messageId} message={this.props.messages[messageId]} />;
       })
     );
   }
 
   render() {
-    // debugger
-
-
     return (
       <div className="message-list" id="message-list">
         {this.createListItems()}
@@ -61,18 +57,10 @@ class MessageList extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  // let messages;
-  // if(Object.keys(state.entities.messages).length === 0) {
-  //   messages = {};
-  // } else {
-  //   messages = state.entities.messages;
-  // }
-  // const channel = state.entities.channels[ownProps.match.params.channelId] || {};
   const user = state.entities.users[state.session.id] || {};
   return {
     messages: state.entities.messages,
     user,
-    // channel
   };
 };
 

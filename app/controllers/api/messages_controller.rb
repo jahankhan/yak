@@ -8,8 +8,12 @@ class Api::MessagesController < ApplicationController
   end
 
   def create
+    # debugger
     @message = Message.new(message_params)
     if @message.save
+      # ActionCable.server.broadcast 'room_channel', body: @message.body, username: @message.user.username
+      ActionCable.server.broadcast 'room_channel', message: @message
+
       render :show
     else
       errors = @message.errors.full_messages

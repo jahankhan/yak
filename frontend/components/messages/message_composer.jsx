@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { setAvatar } from '../../actions/session_actions';
 import { getChannel } from '../../actions/channel_actions';
+import { createMessage } from '../../actions/message_actions';
 
 class MessageComposer extends React.Component {
   constructor(props) {
@@ -21,8 +22,13 @@ class MessageComposer extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
-
+    const formData = new FormData();
+    formData.append("message[body]", this.state.body);
+    formData.append("message[author_id]", this.props.current_user.id);
+    formData.append("message[channel_id]", this.props.match.params.channelId);
+    this.props.createMessage(formData).then(() => {
+      this.setState({body: ''});
+    });
   }
 
   updateBody(e) {
@@ -35,7 +41,9 @@ class MessageComposer extends React.Component {
     const file = e.currentTarget.files[0];
     const formData = new FormData();
     formData.append("user[avatar]", file);
-    this.props.setAvatar(formData, this.props.current_user.id);
+    this.props.setAvatar(formData, this.props.current_user.id).then(() => {
+      this.setState({imageFile: null, imageUrl: null});
+    });
   }
 
   handleSubmitAvatar(e) {
@@ -91,6 +99,7 @@ const mapDispatchToProps = dispatch => {
   return {
     getChannel: channelId => dispatch(getChannel(channelId)),
     setAvatar: (formData, userId) => dispatch(setAvatar(formData, userId)),
+    createMessage: message => dispatch(createMessage(message)),
   };
 };
 

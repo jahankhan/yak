@@ -1,4 +1,4 @@
-App.channel = App.cable.subscriptions.create "ChannelChannel",
+App.room = App.cable.subscriptions.create "RoomChannel",
   connected: ->
     # Called when the subscription is ready for use on the server
 
@@ -6,7 +6,9 @@ App.channel = App.cable.subscriptions.create "ChannelChannel",
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
+    console.log data.message
+    alert data.message.body
     # Called when there's incoming data on the websocket for this channel
 
-  speak: (message) ->
-    @perform 'speak', message: message
+  # speak: (message) ->
+  #   # @perform 'speak', message: message
