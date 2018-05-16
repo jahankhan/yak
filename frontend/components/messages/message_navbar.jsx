@@ -1,12 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink, Link, withRouter } from 'react-router-dom';
+import { logout } from '../../actions/session_actions';
 import { getChannel } from '../../actions/channel_actions';
 import { selectUserChannels, selectUserDMs } from '../../reducers/selectors';
 
 class MessageNav extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      modalOpen: false
+    };
+    this.toggleModal = this.toggleModal.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
+  }
+
+  handleLogout(e) {
+    e.preventDefault();
+    this.props.logout().then(() => {
+      window.scrollTo(0,0);
+      this.props.history.push('/login');
+    });
   }
 
   renderChannels() {
@@ -45,6 +59,21 @@ class MessageNav extends React.Component {
       return this.props.user.username;
     }
   }
+
+  toggleModal() {
+    console.log("click");
+    const modal = document.getElementById('logout-modal');
+    if (this.state.modalOpen === false) {
+      this.setState({modalOpen: true}, () => {
+        modal.style.display = 'block';
+      });
+    } else {
+      this.setState({modalOpen: false}, () => {
+        modal.style.display = 'none';
+      });
+    }
+  }
+
   // componentDidMount() {
   //   // debugger
   //   // this.props.getChannel(this)
@@ -59,9 +88,18 @@ class MessageNav extends React.Component {
     // debugger
     return (
       <nav className="message-navbar">
-        <div className="user-menu">
+        <div className="user-menu" onClick={this.toggleModal}>
           <div className="team-name">App Academy</div>
           <div className="username">{this.renderUser()}</div>
+          <div className="logout-modal" id="logout-modal">
+            <section className="modal-content">
+              <div className="modal-user-info">
+                Icon
+                Jahan Khan
+              </div>
+              <button onClick={this.handleLogout}>Sign Out</button>
+            </section>
+          </div>
         </div>
         <div className="channel-col">
           <div className="channel-menu">
@@ -97,8 +135,9 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getChannel: channelId => dispatch(getChannel(channelId))
+    getChannel: channelId => dispatch(getChannel(channelId)),
+    logout: () => dispatch(logout())
   };
 };
 
-export default withRouter(connect(mapStateToProps)(MessageNav));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MessageNav));

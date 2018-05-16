@@ -88,3 +88,16 @@
 .selected:hover {
   background-color: #4C968A;
 }
+
+.logout-modal {
+  display: none;
+  position: fixed;
+  border-radius: 4px;
+  z-index: 2;
+  border: 1px solid #ccc;
+  top: 52px;
+  left: 10px;
+  width: 300px;
+  height: 600px;
+  background-color: white;
+}
