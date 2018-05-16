@@ -6,21 +6,22 @@ import SignupPage from './login_page/signup_page';
 import ChannelPage from './channels/channels_home';
 import ChannelFormPage from './channels/channel_form';
 import MessagePage from './messages/messages_home';
+import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 class App extends React.Component {
   constructor(props){
     super(props);
   }
-  
+
   render(){
     return (
       <div>
-        <Route exact path='/' component={HomePage} />
-        <Route path='/login' component={LoginPage} />
-        <Route path='/signup' component={SignupPage} />
-        <Route exact path='/channels' component={ChannelPage} />
-        <Route exact path='/channels/new' component={ChannelPage} />
-        <Route path='/channels/:channelId/messages' component={MessagePage} />
+        <AuthRoute exact path='/' component={HomePage} />
+        <AuthRoute path='/login' component={LoginPage} />
+        <AuthRoute path='/signup' component={SignupPage} />
+        <ProtectedRoute exact path='/channels' component={ChannelPage} />
+        <ProtectedRoute exact path='/channels/new' component={ChannelPage} />
+        <ProtectedRoute path='/channels/:channelId/messages' component={MessagePage} />
 
       </div>
     );
