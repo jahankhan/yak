@@ -32,6 +32,7 @@ class MessagePage extends React.Component {
             that.props.receiveMessage(JSON.parse(data['message']));
             const messageListDiv = document.getElementById("message-list");
             messageListDiv.scrollTop = messageListDiv.scrollHeight;
+            return;
           },
           speak: function(message) {
             // debugger
