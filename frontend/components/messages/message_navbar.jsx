@@ -94,10 +94,17 @@ class MessageNav extends React.Component {
           <div className="logout-modal" id="logout-modal">
             <section className="modal-content">
               <div className="modal-user-info">
-                Icon
-                Jahan Khan
+                <Link to="" className="modal-user-avatar">
+                  <img src={this.props.user.avatar_url}></img>
+                </Link>
+                <span className="modal-user-username">{this.props.user.username}</span>
               </div>
-              <button onClick={this.handleLogout}>Sign Out</button>
+              <div className="modal-profile-btn-container">
+                <span className="modal-profile-btn">Profile & account</span>
+              </div>
+              <div className="modal-signout-container">
+                <button className="modal-signout" onClick={this.handleLogout}>Sign Out</button>
+              </div>
             </section>
           </div>
         </div>
