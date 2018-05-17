@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
+import UserItem from './user_item';
 
 class ChannelForm extends React.Component {
   constructor(props){
@@ -16,6 +17,20 @@ class ChannelForm extends React.Component {
     this.update = this.update.bind(this);
     this.toggleDm = this.toggleDm.bind(this);
     this.whichForm = this.whichForm.bind(this);
+    this.renderUsers = this.renderUsers.bind(this);
+    this.parentUpdate = this.parentUpdate.bind(this);
+  }
+
+  parentUpdate(username) {
+    // debugger
+    if(this.state.dmUsers === '') {
+      return this.setState({dmUsers: this.state.dmUsers + username});
+    } else {
+      return this.setState({dmUsers: `${this.state.dmUsers}, ${username}`});
+    }
+  }
+  componentDidMount() {
+    this.props.getAllUsers();
   }
 
 
@@ -81,7 +96,7 @@ class ChannelForm extends React.Component {
           <h4>Enter users</h4>
           <form onSubmit={this.handleDmSubmit}>
             <div className="channel-form">
-              <input required type="text" onChange={this.update('dmUsers')} placeholder="example user, user2" value={this.state.dmUser}></input>
+              <input required type="text" onChange={this.update('dmUsers')} placeholder="example user, user2" value={this.state.dmUsers}></input>
               <input className="join-channel-btn" type="submit" value="Create"></input>
             </div>
           </form>
@@ -110,6 +125,19 @@ class ChannelForm extends React.Component {
     }
   }
 
+  renderUsers() {
+    if (typeof this.props.users === 'undefined' || Object.keys(this.props.users).length === 0) {
+      return '';
+    } else {
+      return Object.values(this.props.users).map(user => {
+        if (user.id === this.props.current_user.id) {
+          return;
+        }
+        return <UserItem key={user.id} user={user} update={this.parentUpdate}/>;
+      });
+    }
+  }
+
   render(){
     // const form = this.state.isDm ? this.renderChannelForm() : this.renderDmForm;
     // if(this.state.isDm)
@@ -118,6 +146,9 @@ class ChannelForm extends React.Component {
         <Link to="/channels" className="create-channel-btn">Back to browse...</Link>
         <div className="channel-join-container">
           {this.whichForm()}
+          <div className="channel-join-user-scroll">
+            {this.state.isDm ? this.renderUsers() : ''}
+          </div>
         </div>
       </div>
     );

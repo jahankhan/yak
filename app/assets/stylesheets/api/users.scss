@@ -99,3 +99,20 @@
 .get-started-submit:hover {
   background-color: #3a2d82;
 }
+
+.channel-join-user-scroll {
+  overflow-y: scroll;
+  max-height: 300px;
+}
+
+.user-item-info-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.user-item-form-avatar > img{
+  height: 40px;
+  width: 40px;
+}

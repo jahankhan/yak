@@ -2,6 +2,7 @@ import * as SessionAPIUtil from '../util/session_api_util';
 import * as UserAPIUtil from '../util/user_api_util';
 
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
+export const RECEIVE_USERS = 'RECEIVE_USERS';
 export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
 
@@ -11,6 +12,13 @@ export const receiveCurrentUser = payload => {
     type: RECEIVE_CURRENT_USER,
     currentUser: payload.users,
     channels: payload.channels
+  };
+};
+
+export const receiveUsers = users => {
+  return {
+    type: RECEIVE_USERS,
+    users
   };
 };
 
@@ -68,6 +76,14 @@ export const logout = () => dispatch => {
 export const setAvatar = (formData, userId) => dispatch => {
   return UserAPIUtil.setAvatar(formData, userId).then(userData => {
     return dispatch(receiveCurrentUser(userData));
+  }, err => {
+    return dispatch(receiveErrors(err.responseJSON));
+  });
+};
+
+export const getAllUsers = () => dispatch => {
+  return UserAPIUtil.getAllUsers().then(userData => {
+    return dispatch(receiveUsers(userData));
   }, err => {
     return dispatch(receiveErrors(err.responseJSON));
   });
