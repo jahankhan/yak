@@ -1,5 +1,6 @@
 .message-navbar {
   display: flex;
+  position: relative;
   background-color: #4D394B;
   flex-direction: column;
   height: 100vh;
@@ -7,6 +8,10 @@
   min-width: 220px;
   color: #ab9ba9;
   z-index: 2;
+}
+
+.message-navbar > div{
+  position: absolute;
 }
 
 .user-menu {
@@ -31,6 +36,7 @@
   //dont forget to remove
   // border-top: 1px solid black;
   // margin-left: 16px;
+  top:40px;
   line-height: 1.6;
 }
 
