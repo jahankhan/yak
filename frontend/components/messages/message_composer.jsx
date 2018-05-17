@@ -18,6 +18,19 @@ class MessageComposer extends React.Component {
     this.updateBody = this.updateBody.bind(this);
     this.callFileInput = this.callFileInput.bind(this);
     this.updateFile = this.updateFile.bind(this);
+    this.renderDmTitle = this.renderDmTitle.bind(this);
+  }
+
+  renderDmTitle(arr) {
+    if (typeof arr === 'undefined'){
+      return '';
+    }
+    return arr.map(id => this.props.users[id].username).join(', ');
+  }
+
+  componentWillMount() {
+    // debugger
+    // this.props.getChannel(this.props.match.params.channelId);
   }
 
   handleSubmit(e) {
@@ -71,13 +84,18 @@ class MessageComposer extends React.Component {
 
   render() {
     let channelTitle;
-    if(typeof this.props.channel === 'undefined') {
+    if(typeof this.props.channel === 'undefined' || typeof this.props.channel.userIds === 'undefined') {
       // debugger
       channelTitle = '';
 
     } else {
-      // debugger
-      channelTitle = this.props.channel.title;
+      if(this.props.channel.dm) {
+        // debugger
+        channelTitle = `@ ${this.renderDmTitle(this.props.channel.userIds)}`;
+      } else {
+        channelTitle = `#${this.props.channel.title}`;
+      }
+
     }
     return (
       <footer className="message-footer">
@@ -86,7 +104,7 @@ class MessageComposer extends React.Component {
           <input onChange={this.updateFile} type="file" className="file-attacher" id="file-attacher-btn"></input>
           <div className="message-form-input-container">
             <form onSubmit={this.handleSubmit} className="message-create-form">
-              <input onChange={this.updateBody} className="message-form-input" type="text" placeholder={`Message #${channelTitle}`} value={this.state.body}></input>
+              <input onChange={this.updateBody} className="message-form-input" type="text" placeholder={`Message ${channelTitle}`} value={this.state.body}></input>
             </form>
           </div>
         </div>
@@ -99,7 +117,8 @@ const mapStateToProps = (state, ownProps) => {
   const channelId = ownProps.match.params.channelId;
   return {
     current_user: state.session,
-    channel: state.entities.channels[channelId]
+    channel: state.entities.channels[channelId],
+    users: state.entities.users
   };
 };
 
