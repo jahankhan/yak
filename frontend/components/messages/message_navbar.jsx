@@ -161,7 +161,7 @@ class MessageNav extends React.Component {
               <div className="profile-modal-header">
                 <h2> Workspace Directory </h2>
               </div>
-              <button className="profile-modal-back-btn">x</button>
+              <button className="profile-modal-back-btn" onClick={this.togglepModal}>x</button>
             </div>
             <section className="profile-modal-userinfo-container">
               <div className="profile-modal-user-avatar">

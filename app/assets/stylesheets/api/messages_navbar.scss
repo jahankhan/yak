@@ -167,7 +167,7 @@
 }
 
 .profile-modal {
-  // display: none;
+  display: none;
   background-color: #fff;
   max-height: calc(100vh - 64px);
   position: fixed;
@@ -208,7 +208,7 @@
   font-size: 24px;
 }
 
-.profile-modal-back-btn {
+.profile-modal-back-btn:hover {
   color: #005e99;
 }
 
