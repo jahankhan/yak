@@ -5,6 +5,11 @@ import { withRouter } from 'react-router-dom';
 class MessageChannelNav extends React.Component {
   constructor(props) {
     super(props);
+    this.handleTopicChange = this.handleTopicChange.bind(this);
+  }
+
+  handleTopicChange() {
+
   }
 
   renderDmTitle(arr) {
@@ -24,6 +29,17 @@ class MessageChannelNav extends React.Component {
     }
   }
 
+  renderTopic() {
+    if (typeof this.props.channel === 'undefined') {
+      return '';
+    } else if (this.props.channel.topic === '') {
+      // return 'Add a topic';
+      return <button onClick={this.handleTopicChange}>Add a topic</button>;
+    } else {
+      return this.props.channel.topic;
+    }
+  }
+
   render() {
     // debugger
     return (
@@ -34,7 +50,7 @@ class MessageChannelNav extends React.Component {
             <span className="channel-small-items">s</span>
             <span className="channel-small-items">numU</span>
             <span className="channel-small-items">pin</span>
-            <span className="channel-small-items">Add a topic</span>
+            <span className="channel-small-items">{this.renderTopic()}</span>
           </div>
         </div>
         <div className="message-channel-navbar-right">
