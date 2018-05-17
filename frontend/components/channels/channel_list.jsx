@@ -41,11 +41,19 @@ class ChannelList extends React.Component {
     // debugger
     return (
       <ul className="channel-list">
-        <div className="channel-list-header-container">
-          <h1>Join a Channel</h1>
-          <button onClick={this.handleSubmit}>Create</button>
+        <button className="create-channel-btn" onClick={this.handleSubmit}>Create channel...</button>
+        <div className="channel-join-container">
+          <div className="channel-list-header-container">
+            <h1>Browse channels</h1>
+
+          </div>
+          <div className="channel-list-scroll">
+            <div className="channels-join-header">
+              Channels you can join
+            </div>
+            {this.createListItems()}
+          </div>
         </div>
-        {this.createListItems()}
       </ul>
     );
   }

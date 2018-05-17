@@ -12,8 +12,6 @@ class ChannelPage extends React.Component {
     this.handleBack = this.handleBack.bind(this);
   }
 
-
-
   getListOrForm(){
     // debugger
     if(this.props.history.location.pathname === '/channels') {
@@ -31,12 +29,13 @@ class ChannelPage extends React.Component {
       this.props.history.push(`/channels/${this.props.currentUser.active_channel}/messages`);
     }
   }
+
   render(){
     return (
       <div>
         <LoginNav />
         <button className="channel-back-btn" onClick={this.handleBack}>x</button>
-        <main className="main">
+        <main className="channel-main">
 
           {this.getListOrForm()}
         </main>

@@ -2,19 +2,42 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.channel-main {
+  display: flex;
+  background-color: #f9f9f9;
+  min-height: 800px;
+  position: relative;
+  padding-top: 70px;
+  font-family: Verdana, Geneva, sans-serif;
+}
+
 .channel-item-form-container {
   text-align: center;
   // border-bottom: 1px solid gray;
   font-family: Verdana, Geneva, sans-serif;
   font-size: 14px;
+  width: calc(100% - 14px);
+  min-height: 60px;
+  padding-top: calc(12px - 1px);
+  padding-bottom: calc(16px - 1px);
+  padding-left: calc(12px - 1px);
+  border: 1px solid transparent;
+  border-top: 1px solid #e8e8e8;
+  // cursor: pointer;
+  line-height: 1.46668;
+}
+
+.channel-item-form-container:hover {
+  background: #eaf5fc;
+  border-radius: 6px;
+  border: 1px solid #cbe7f7;
 }
 
 .channel-list {
   margin: 0 auto;
   background-color: #fff;
-  width: 500px;
-  height: 400px;
-  border: 1px solid lightgray;
+  width: 100vw;
+  height: 100vh;
   border-radius: 4px;
   overflow-y: auto;
   // box-shadow:
@@ -23,35 +46,25 @@
 .channel-list-header-container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  // justify-content: center;
+  margin-top: 90px;
 }
 
 .channel-list-header-container > button {
-  margin-right: 12px;
-  border-radius: 2px;
-  // padding: 5px;
-  width: 27%;
-  height: 27px;
-  background-color: #3f46ad;
-  text-align: center;
-  color: #fff;
-  font-family: Verdana, Geneva, sans-serif;
-  font-size: 14px;
-  transition: background-color .3s;
+
+  // transition: background-color .3s;
   // margin-bottom: -5px;
   // border-bottom: 1px solid gray;
 }
 
-.channel-list-header-container > button:hover {
-  background-color: #3a2d82;
-}
-
 
 .channel-list-header-container > h1 {
-  font-size: 26px;
+  font-size: 34px;
   font-weight: 700;
   // text-align: center;
-  margin: 20px 0 30px 14px;
+  color: #2c2d30;
+
+  margin-bottom: 30px;
   // margin-top: 20px;
   // margin-left: 10px;
 }
@@ -90,9 +103,14 @@
   display: flex;
   margin-top: 10px;
   justify-content: space-between;
-  border-bottom: 1px solid lightgray;
   align-items: center;
   padding-bottom: 12px;
+  margin-top: 16px;
+
+}
+
+.flex-channel-items {
+
 }
 
 .channel-form-main {
@@ -195,19 +213,64 @@
 .channel-back-btn {
   font-family: 'Noto Sans', sans-serif;
   position: absolute;
-  top: 100px;
-  left: 25px;
+  top: 125px;
+  right: 70px;
+  width: 70px;
+  height: 70px;
   z-index: 2;
-  height: 30px;
-  width: 30px;
   border-radius: 50%;
   text-align: center;
   background-color: #fff;
-  color: lightgray;
-  border: 1px solid lightgray;
+  color: gray;
+  font-size: 36px;
+}
+
+.channel-back-btn:hover {
+  background-color: #ccc;
 }
 
 .channel-dm-form-creation-container {
   margin: 0 auto;
   text-align: center;
+}
+
+.create-channel-btn {
+  position: absolute;
+  top: 100px;
+  left: 40px;
+  margin-right: 12px;
+  border-radius: 2px;
+  height: 27px;
+  text-align: center;
+  color: #717274;
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 16px;
+}
+
+.create-channel-btn:hover {
+  text-decoration: underline;
+}
+
+.channel-join-container {
+
+  width: 60%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  margin: 0 auto;
+}
+
+.channels-join-header {
+  background: #f9f9f9;
+  border-radius: 4px 4px 0 0;
+  width: 100%;
+  margin: 0 auto;
+  padding: 4px 0 4px 12px;
+  font-size: 15px;
+  color: #717274;
+}
+
+.channel-list-scroll {
+  overflow-y: scroll;
 }
