@@ -67,7 +67,7 @@ class MessageNav extends React.Component {
       return this.props.dms.map(dm => {
         if(typeof dm === 'undefined') return;
         if (typeof dm.userIds === 'undefined') return '';
-        return <NavLink key={dm.id} to={`/channels/${dm.id}/messages`} activeClassName="selected" className="channel-menu-item-link"><span key={dm.id} className="channel-menu-item"> {this.renderDmTitle(dm.userIds)}</span></NavLink>;
+        return <NavLink key={dm.id} to={`/channels/${dm.id}/messages`} activeClassName="selected" className="channel-menu-item-link"><span key={dm.id} className="channel-menu-item"> @ {this.renderDmTitle(dm.userIds)}</span></NavLink>;
       });
     }
   }
@@ -151,7 +151,7 @@ class MessageNav extends React.Component {
 
           </div>
           <div className="dm-menu">
-            <Link to="/channels/new" className="side-nav-header-link">
+            <Link to="/channels/new/" className="side-nav-header-link">
               <span className="side-nav-headers">Direct Messages</span>
             </Link>
             {this.renderDMs()}

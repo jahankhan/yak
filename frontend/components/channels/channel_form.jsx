@@ -4,9 +4,11 @@ import { withRouter, Link } from 'react-router-dom';
 class ChannelForm extends React.Component {
   constructor(props){
     super(props);
+    // debugger
+    const dm = this.props.match.url === '/channels/new/' ? true : false;
     this.state = {
       title: '',
-      isDm: false,
+      isDm: dm,
       dmUsers: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -20,12 +22,11 @@ class ChannelForm extends React.Component {
   update(field) {
     return e => {
       this.setState({[field]: e.currentTarget.value});
-    }
+    };
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    // debugger
     this.props.createChannel({title: this.state.title}).then((data) => {
       const keys = Object.keys(data.currentChannel);
       const currentChannel = keys[keys.length-1];
@@ -43,7 +44,6 @@ class ChannelForm extends React.Component {
     e.preventDefault();
     const users = this.state.dmUsers.split(/,| /);
     this.props.createChannel({title: '-bad-', dm: true}).then((data) => {
-      debugger
       const keys = Object.keys(data.currentChannel);
       const currentChannel = keys[keys.length-1];
 

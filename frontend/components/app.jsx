@@ -20,7 +20,7 @@ class App extends React.Component {
         <AuthRoute path='/login' component={LoginPage} />
         <AuthRoute path='/signup' component={SignupPage} />
         <ProtectedRoute exact path='/channels' component={ChannelPage} />
-        <ProtectedRoute exact path='/channels/new' component={ChannelPage} />
+        <ProtectedRoute path='/channels/new' component={ChannelPage} />
         <ProtectedRoute path='/channels/:channelId/messages' component={MessagePage} />
 
       </div>

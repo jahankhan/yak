@@ -9,7 +9,7 @@ class MessageChannelNav extends React.Component {
   }
 
   handleTopicChange() {
-
+    //come back to later
   }
 
   renderDmTitle(arr) {
