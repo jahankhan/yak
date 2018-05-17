@@ -114,8 +114,10 @@ class ChannelForm extends React.Component {
     // const form = this.state.isDm ? this.renderChannelForm() : this.renderDmForm;
     // if(this.state.isDm)
     return (
-      <div className="channel-dm-form-creation-container">
-        {this.whichForm()}
+      <div className="channel-list">
+        <div className="channel-join-container">
+          {this.whichForm()}
+        </div>
       </div>
     );
   }

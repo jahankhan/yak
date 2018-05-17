@@ -33,8 +33,9 @@ class ChannelPage extends React.Component {
   render(){
     return (
       <div>
-        <LoginNav />
         <button className="channel-back-btn" onClick={this.handleBack}>x</button>
+        <LoginNav />
+
         <main className="channel-main">
 
           {this.getListOrForm()}

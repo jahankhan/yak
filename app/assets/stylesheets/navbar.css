@@ -1,3 +1,7 @@
+.login-navbar {
+  z-index: 3px;
+}
+
 .login-nav-list > li img {
   height: 32px;
   width: 32px;

@@ -5,7 +5,8 @@
 .channel-main {
   display: flex;
   background-color: #f9f9f9;
-  min-height: 800px;
+  // min-height: 800px;
+  height: calc(100vh - 200px);
   position: relative;
   padding-top: 70px;
   font-family: Verdana, Geneva, sans-serif;
@@ -37,7 +38,7 @@
   margin: 0 auto;
   background-color: #fff;
   width: 100vw;
-  height: 100vh;
+  // height: 100%;
   border-radius: 4px;
   overflow-y: auto;
   // box-shadow:
@@ -116,13 +117,7 @@
 .channel-form-main {
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
-  background-color: #fff;
-  width: 500px;
-  height: 250px;
-  border: 1px solid lightgray;
-  border-radius: 4px;
-  text-align: center;
+  margin-top: 75px;
 }
 
 .channel-form-main > h1 {
@@ -136,10 +131,12 @@
 }
 
 .channel-form {
+  margin-top: 6px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
+  // flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
 }
 
 .channel-form > input[type="submit"] {
@@ -150,7 +147,7 @@
   border: 1px solid lightgray;
   border-radius: 4px;
   padding: 6px;
-  margin-bottom: 15px;
+  // margin-bottom: 15px;
 }
 
 .channel-form-checkbox {
@@ -206,8 +203,8 @@
 
 .channel-switch-conatiner {
   display: flex;
-  justify-content: center;
-  align-items: baseline;
+  margin-top: 8px;
+  margin-bottom: 14px;
 }
 
 .channel-back-btn {
@@ -217,7 +214,7 @@
   right: 70px;
   width: 70px;
   height: 70px;
-  z-index: 2;
+  z-index: 1;
   border-radius: 50%;
   text-align: center;
   background-color: #fff;
@@ -254,7 +251,7 @@
 .channel-join-container {
 
   width: 60%;
-  height: 100vh;
+  // height: 100vh;
   display: flex;
   flex-direction: column;
   /* align-items: center; */
