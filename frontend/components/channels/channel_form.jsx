@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 class ChannelForm extends React.Component {
   constructor(props){
@@ -81,7 +81,7 @@ class ChannelForm extends React.Component {
           <h4>Enter users</h4>
           <form onSubmit={this.handleDmSubmit}>
             <div className="channel-form">
-              <input required type="text" onChange={this.update('dmUsers')} placeholder="example user" value={this.state.dmUser}></input>
+              <input required type="text" onChange={this.update('dmUsers')} placeholder="example user, user2" value={this.state.dmUser}></input>
               <input className="join-channel-btn" type="submit" value="Create"></input>
             </div>
           </form>
@@ -115,6 +115,7 @@ class ChannelForm extends React.Component {
     // if(this.state.isDm)
     return (
       <div className="channel-list">
+        <Link to="/channels" className="create-channel-btn">Back to browse...</Link>
         <div className="channel-join-container">
           {this.whichForm()}
         </div>
