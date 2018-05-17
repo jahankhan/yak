@@ -21,3 +21,13 @@ export const selectUserDMs = (state, user) => {
   }
   return user ? user.dmIds.map(dmId => state.entities.channels[dmId]) : [];
 };
+
+export const selectChannelMessages = (state, channelId) => {
+  if (Object.keys(state.entities.messages).length === 0 || typeof channelId === 'undefined') {
+    return {};
+  }
+  // debugger
+  return channelId ? Object.values(state.entities.messages).filter(message => message.channel_id === parseInt(channelId)) : {};
+};
+
+// Object.keys(state.entities.messsages).map(e => state.entities.messages[e]).filter(message => message.channel_id === parseInt(channelId))

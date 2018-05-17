@@ -3,7 +3,10 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import MessageItem from './message_item';
 import { getChannel } from '../../actions/channel_actions';
-import { selectAllMessages } from '../../reducers/selectors';
+import {
+  selectAllMessages,
+  selectChannelMessages
+  } from '../../reducers/selectors';
 import { getAllMessages } from '../../actions/message_actions';
 import { getUser } from '../../actions/session_actions';
 
@@ -59,7 +62,7 @@ class MessageList extends React.Component {
 const mapStateToProps = (state, ownProps) => {
   const user = state.entities.users[state.session.id] || {};
   return {
-    messages: state.entities.messages,
+    messages: selectChannelMessages(state, ownProps.match.params.channelId),
     user,
   };
 };
