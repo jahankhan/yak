@@ -165,3 +165,92 @@
 .modal-profile-btn {
   margin-left: 25px;
 }
+
+.profile-modal {
+  // display: none;
+  background-color: #fff;
+  max-height: calc(100vh - 64px);
+  position: fixed;
+  top:64px;
+  right: 0px;
+  height: calc(100vw - 70px);
+  width: 30%;
+  border-left: 1px solid lightgray;
+  color: #717274;
+  // z-index: 3;
+}
+
+.profile-modal-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #e8e8e8;
+  padding: 20px 0 20px 0;
+  font-size: 20px;
+
+}
+
+.profile-modal-header {
+  color: black;
+  font-weight: bold;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.profile-modal-header:hover {
+  color: #005e99;
+}
+
+.profile-modal-back-btn {
+
+  margin-right: 20px;
+  font-size: 24px;
+}
+
+.profile-modal-back-btn {
+  color: #005e99;
+}
+
+.profile-modal-userinfo-container {
+  padding: 0 8px 0 4px;
+}
+
+.profile-modal-user-avatar {
+  height: 218px;
+  margin-top: 12px;
+}
+
+.profile-modal-user-avatar > img {
+  border-radius: 4px;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.profile-modal-username {
+  text-align: center;
+  font-size: 28px;
+}
+
+.profile-modal-edit-avatar {
+  display: flex;
+  margin-top: 15px;
+}
+
+.profile-modal-edit-avatar-btn {
+  height: 26px;
+  width: 92px;
+  border: 1px solid #e8e8e8;
+  background-color: #f9f9f9;
+  padding: 10px;
+  text-align: center;
+  border-radius: 4px;
+  color: black;
+  margin: 0 auto;
+}
+
+.profile-modal-edit-avatar-btn:hover {
+  background-color: #fff;
+  color: #005e99;
+
+}

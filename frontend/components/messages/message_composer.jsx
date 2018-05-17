@@ -62,7 +62,7 @@ class MessageComposer extends React.Component {
   }
 
   callFileInput() {
-    document.getElementById("file-attacher-btn").click();
+    // document.getElementById("file-attacher-btn").click();
   }
 
   componentDidMount() {

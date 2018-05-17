@@ -1,18 +1,38 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink, Link, withRouter } from 'react-router-dom';
-import { logout } from '../../actions/session_actions';
+import { logout, setAvatar } from '../../actions/session_actions';
 import { getChannel } from '../../actions/channel_actions';
 import { selectUserChannels, selectUserDMs } from '../../reducers/selectors';
+
 
 class MessageNav extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      modalOpen: false
+      modalOpen: false,
+      pmodalOpen: false
     };
     this.toggleModal = this.toggleModal.bind(this);
+    this.togglepModal = this.togglepModal.bind(this);
+
     this.handleLogout = this.handleLogout.bind(this);
+    this.handleAvatarChange = this.handleAvatarChange.bind(this);
+    this.callFileInput = this.callFileInput.bind(this);
+  }
+
+  handleAvatarChange(e) {
+    e.preventDefault();
+    const file = e.currentTarget.files[0];
+    const formData = new FormData();
+    formData.append("user[avatar]", file);
+    this.props.setAvatar(formData, this.props.current_user.id).then(() => {
+      // this.setState({imageFile: null, imageUrl: null});
+    });
+  }
+
+  callFileInput() {
+    document.getElementById("file-attacher-btn").click();
   }
 
   handleLogout(e) {
@@ -74,6 +94,20 @@ class MessageNav extends React.Component {
     }
   }
 
+  togglepModal() {
+    console.log("pclick");
+    const pmodal = document.getElementById('profile-modal');
+    if (this.state.pmodalOpen === false) {
+      this.setState({pmodalOpen: true}, () => {
+        pmodal.style.display = 'block';
+      });
+    } else {
+      this.setState({pmodalOpen: false}, () => {
+        pmodal.style.display = 'none';
+      });
+    }
+  }
+
   // componentDidMount() {
   //   // debugger
   //   // this.props.getChannel(this)
@@ -99,7 +133,7 @@ class MessageNav extends React.Component {
                 </Link>
                 <span className="modal-user-username">{this.props.user.username}</span>
               </div>
-              <div className="modal-profile-btn-container">
+              <div onClick={this.togglepModal} className="modal-profile-btn-container">
                 <span className="modal-profile-btn">Profile & account</span>
               </div>
               <div className="modal-signout-container">
@@ -122,6 +156,26 @@ class MessageNav extends React.Component {
             </Link>
             {this.renderDMs()}
           </div>
+          <div className="profile-modal" id="profile-modal" style={{zIndex:3}}>
+            <div className="profile-modal-header-container">
+              <div className="profile-modal-header">
+                <h2> Workspace Directory </h2>
+              </div>
+              <button className="profile-modal-back-btn">x</button>
+            </div>
+            <section className="profile-modal-userinfo-container">
+              <div className="profile-modal-user-avatar">
+                <img src={this.props.user.avatar_url}></img>
+                <input onChange={this.handleAvatarChange} type="file" className="file-attacher" id="file-attacher-btn"></input>
+              </div>
+              <div className="profile-modal-username">
+                <h2>{this.props.user.username}</h2>
+              </div>
+              <div className="profile-modal-edit-avatar">
+                <button className="profile-modal-edit-avatar-btn" onClick={this.callFileInput}>Edit Avatar</button>
+              </div>
+            </section>
+          </div>
         </div>
       </nav>
 
@@ -134,6 +188,7 @@ const mapStateToProps = (state, ownProps) => {
   // debugger
   return {
     user,
+    current_user: state.session,
     channels: selectUserChannels(state, user),
     dms: selectUserDMs(state, user),
     users: state.entities.users
@@ -143,7 +198,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return {
     getChannel: channelId => dispatch(getChannel(channelId)),
-    logout: () => dispatch(logout())
+    logout: () => dispatch(logout()),
+    setAvatar: (formData, userId) => dispatch(setAvatar(formData, userId))
   };
 };
 

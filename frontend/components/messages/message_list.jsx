@@ -55,6 +55,7 @@ class MessageList extends React.Component {
       <div className="message-list" id="message-list">
         {this.createListItems()}
       </div>
+
     );
   }
 }
