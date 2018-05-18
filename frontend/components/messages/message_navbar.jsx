@@ -136,8 +136,8 @@ class MessageNav extends React.Component {
               <div onClick={this.togglepModal} className="modal-profile-btn-container">
                 <span className="modal-profile-btn">Profile & account</span>
               </div>
-              <div className="modal-signout-container">
-                <button className="modal-signout" onClick={this.handleLogout}>Sign Out</button>
+              <div className="modal-signout-container" onClick={this.handleLogout}>
+                <button className="modal-signout" >Sign Out</button>
               </div>
             </section>
           </div>

@@ -252,5 +252,8 @@
 .profile-modal-edit-avatar-btn:hover {
   background-color: #fff;
   color: #005e99;
+}
 
+.modal-profile-btn-container, .modal-signout-container {
+  cursor: pointer;
 }
