@@ -62,7 +62,7 @@ class SessionForm extends React.Component {
   }
 
   demoUser() {
-    const login = "test";
+    const login = "guest";
     const password = "starwars";
     const button = document.getElementById("session-submit-btn");
     let i = 0;

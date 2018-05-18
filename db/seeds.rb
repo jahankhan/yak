@@ -10,9 +10,9 @@ Channel.destroy_all
 ChannelUser.destroy_all
 Message.destroy_all
 u1 = User.create!(username: 'guest', password: 'starwars', email: 'test123@gmail.com')
-u2 = User.create!(username: 'fresh prince', password: 'starwars', avatar: 'https://s3.us-east-2.amazonaws.com/jahankhan-yak-pro/users/avatars/000/000/001/original/willsmith.jpg', email: 'fp@gmail.com' )
-u3 = User.create!(username: 'mom', password: 'starwars', avatar: 'https://s3.us-east-2.amazonaws.com/jahankhan-yak-pro/users/avatars/000/000/001/original/willmom.jpg', email: 'mom@gmail.com' )
-u4 = User.create!(username: 'carlton', password: 'starwars', avatar: 'https://s3.us-east-2.amazonaws.com/jahankhan-yak-pro/users/avatars/000/000/001/original/carlton.png', email: 'carlton@gmail.com' )
+u2 = User.create!(username: 'fresh prince', password: 'starwars', email: 'fp@gmail.com' )
+u3 = User.create!(username: 'mom', password: 'starwars', email: 'mom@gmail.com' )
+u4 = User.create!(username: 'carlton', password: 'starwars', email: 'carlton@gmail.com' )
 c1 = Channel.create!(title: 'uncle phils house', dm: false)
 c2 = Channel.create!(title: 'mom chat', dm: false)
 c3 = Channel.create!(title: 'carlton', dm: true)
