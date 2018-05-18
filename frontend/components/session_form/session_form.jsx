@@ -94,7 +94,7 @@ class SessionForm extends React.Component {
       case 'password':
         return 'password';
       case 'Sign Up':
-        return 'Enter your username, email address, avatar_url, and password';
+        return 'Enter your username, email address, and password';
       case 'Sign In':
         return 'Enter your username and email address';
       default:
@@ -135,23 +135,23 @@ class SessionForm extends React.Component {
 
 
 
+  // {this.props.formType === "Sign Up" ? this.renderInputs('avatar_url') : ''}
   render() {
     return (
       <div className="login-form-container">
         <form onSubmit={this.handleSubmit} className="login-form-box">
-          <h2>Sign {this.getHeader(this.props.formType)} to Whatever</h2>
+          <h2>Sign {this.getHeader(this.props.formType)} to App Academy</h2>
           {this.renderErrors()}
           <h6>{this.getPlaceholderText(this.props.formType)}</h6>
           <div className="login-form">
             <br/>
             {this.renderInputs('username')}
             {this.props.formType === "Sign Up" ? this.renderInputs('email') : ''}
-            {this.props.formType === "Sign Up" ? this.renderInputs('avatar_url') : ''}
             {this.renderInputs('password')}
             <input id="session-submit-btn" className="session-submit" type="submit" value={this.props.formType} />
           </div>
         </form>
-        <button className="demo-user-btn" onClick={this.demoUser}>Log in as guest user</button>
+        {this.props.match.url === '/login' ? <button className="demo-user-btn" onClick={this.demoUser}>Log in as guest user</button> : ''}
       </div>
     );
   }
