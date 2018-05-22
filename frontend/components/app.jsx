@@ -27,6 +27,5 @@ class App extends React.Component {
     );
   }
 }
-// <Route path='/channel/:channelId/messages' component={LoginPage} />
 
 export default App;

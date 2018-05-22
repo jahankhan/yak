@@ -28,28 +28,15 @@ class MessageComposer extends React.Component {
     return arr.map(id => this.props.users[id].username).join(', ');
   }
 
-  componentWillMount() {
-    // debugger
-    // this.props.getChannel(this.props.match.params.channelId);
-  }
-
   handleSubmit(e) {
     e.preventDefault();
-    // const formData = new FormData();
-    // formData.append("message[body]", this.state.body);
-    // formData.append("message[author_id]", this.props.current_user.id);
-    // formData.append("message[channel_id]", this.props.match.params.channelId);
     const message = {
       body: this.state.body,
       author_id: this.props.current_user.id,
       channel_id: this.props.match.params.channelId
     };
-    // debugger
     App.room.speak(message);
     this.setState({body: ''});
-    // this.props.createMessage(formData).then(() => {
-    //   this.setState({body: ''});
-    // });
   }
 
   updateBody(e) {
@@ -57,7 +44,7 @@ class MessageComposer extends React.Component {
   }
 
   updateFile(e) {
-    // debugger
+
     e.preventDefault();
     const file = e.currentTarget.files[0];
     const formData = new FormData();
@@ -68,7 +55,7 @@ class MessageComposer extends React.Component {
   }
 
   handleSubmitAvatar(e) {
-    // debugger
+
     e.preventDefault();
 
 
@@ -85,12 +72,12 @@ class MessageComposer extends React.Component {
   render() {
     let channelTitle;
     if(typeof this.props.channel === 'undefined' || typeof this.props.channel.userIds === 'undefined') {
-      // debugger
+
       channelTitle = '';
 
     } else {
       if(this.props.channel.dm) {
-        // debugger
+
         channelTitle = `@ ${this.renderDmTitle(this.props.channel.userIds)}`;
       } else {
         channelTitle = `#${this.props.channel.title}`;
@@ -113,7 +100,7 @@ class MessageComposer extends React.Component {
   }
 }
 const mapStateToProps = (state, ownProps) => {
-  // debugger
+
   const channelId = ownProps.match.params.channelId;
   return {
     current_user: state.session,

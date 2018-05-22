@@ -9,7 +9,7 @@ class SignupPage extends React.Component {
   }
 
   render(){
-    // debugger
+
     return (
       <div>
         <LoginNav />

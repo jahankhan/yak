@@ -33,9 +33,6 @@
 }
 
 .channel-col {
-  //dont forget to remove
-  // border-top: 1px solid black;
-  // margin-left: 16px;
   width: 100%;
   top:40px;
   line-height: 1.6;
@@ -58,10 +55,6 @@
   color: #fff;
 }
 
-.side-nav-headers:hover {
-
-}
-
 .channel-menu-item-link:hover {
 
   background-color: #3E313C;
@@ -78,13 +71,10 @@
 
 .channel-menu-item {
   display: block;
-  // font-size: 14px;
-  // margin-left: 4px
 }
 
 .dm-menu-item {
   display: block;
-  // font-size: 14px;
   margin-left: 4px
 }
 
@@ -124,7 +114,6 @@
   height: 50px;
   width: 50px;
   align-items: center;
-  // border-radius: 4px;
 }
 
 .modal-user-avatar > img {
@@ -177,7 +166,6 @@
   width: 30%;
   border-left: 1px solid lightgray;
   color: #717274;
-  // z-index: 3;
 }
 
 .profile-modal-header-container {

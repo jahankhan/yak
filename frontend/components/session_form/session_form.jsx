@@ -36,10 +36,8 @@ class SessionForm extends React.Component {
   }
 
   loginGuest(login, password, i, j, button) {
-
-    // debugger
     if (i < login.length) {
-      // debugger
+
       let string = this.state.username + login[i];
       this.setState({username: string}, () => {
         window.setTimeout(() => {
@@ -58,7 +56,6 @@ class SessionForm extends React.Component {
         }, 75);
       });
     }
-    //
   }
 
   demoUser() {
@@ -133,9 +130,6 @@ class SessionForm extends React.Component {
     );
   }
 
-
-
-  // {this.props.formType === "Sign Up" ? this.renderInputs('avatar_url') : ''}
   render() {
     return (
       <div className="login-form-container">

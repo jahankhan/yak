@@ -5,7 +5,7 @@ import UserItem from './user_item';
 class ChannelForm extends React.Component {
   constructor(props){
     super(props);
-    // debugger
+
     const dm = this.props.match.url === '/channels/new/' ? true : false;
     this.state = {
       title: '',
@@ -22,7 +22,7 @@ class ChannelForm extends React.Component {
   }
 
   parentUpdate(username) {
-    // debugger
+
     if(this.state.dmUsers === '') {
       return this.setState({dmUsers: this.state.dmUsers + username});
     } else {
@@ -50,8 +50,6 @@ class ChannelForm extends React.Component {
           this.props.history.push(`/channels/${currentChannel}/messages`);
         });
       });
-
-      // this.props.history.push(`/channels/${currentChannel}/messages`);
     });
   }
 
@@ -139,8 +137,6 @@ class ChannelForm extends React.Component {
   }
 
   render(){
-    // const form = this.state.isDm ? this.renderChannelForm() : this.renderDmForm;
-    // if(this.state.isDm)
     return (
       <div className="channel-list">
         <Link to="/channels" className="create-channel-btn">Back to browse...</Link>

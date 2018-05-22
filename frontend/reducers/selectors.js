@@ -3,7 +3,7 @@ import values from 'lodash/values';
 export const selectAllChannels = state => values(state.entities.channels);
 
 export const selectUserChannels = (state, user) => {
-  // debugger
+
   if (Object.keys(state.entities.channels).length === 0 || typeof user.channelIds === 'undefined') {
     return [];
   }
@@ -15,7 +15,7 @@ export const selectChannelUsers = (state, channel) => {
 };
 
 export const selectUserDMs = (state, user) => {
-  // debugger
+
   if (Object.keys(state.entities.channels).length === 0 || typeof user.dmIds === 'undefined') {
     return [];
   }
@@ -26,8 +26,6 @@ export const selectChannelMessages = (state, channelId) => {
   if (Object.keys(state.entities.messages).length === 0 || typeof channelId === 'undefined') {
     return {};
   }
-  // debugger
+
   return channelId ? Object.values(state.entities.messages).filter(message => message.channel_id === parseInt(channelId)) : {};
 };
-
-// Object.keys(state.entities.messsages).map(e => state.entities.messages[e]).filter(message => message.channel_id === parseInt(channelId))

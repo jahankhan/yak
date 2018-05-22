@@ -3,9 +3,6 @@ import { connect } from 'react-redux';
 import { Route, Redirect, withRouter } from 'react-router-dom';
 
 const Auth = ({ component: Component, path, loggedIn, exact }) => {
-  // we have destructured the component prop and assigned it to a new
-  // variable called "Component" so we can render it as a React Component
-  //const Component = component // equivalent to what we do in the parameters
   return (
     <Route path={path} exact={exact} render={(props) => {
         if (!loggedIn) {

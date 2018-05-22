@@ -18,24 +18,16 @@ class MessageList extends React.Component {
 
   checkScroll() {
     const messageListDiv = document.getElementById("message-list");
-    // console.log(messageListDiv.scrollHeight);
-    // console.log(messageListDiv.scrollTop);
     if(messageListDiv.scrollTop < 10) {
-      // this.props.getAllMessages(this.props.match.params.channelId);
     }
   }
 
   componentDidMount() {
     const messageListDiv = document.getElementById("message-list");
-    // debugger
     messageListDiv.addEventListener('scroll', this.checkScroll);
-    // messageListDiv.scrollTop = messageListDiv.scrollHeight;
-    // debugger
-    // this.props.getChannel(this.props.match.params.channelId);
     this.props.getUser(this.props.user.id).then(() => {
       this.props.getChannel(this.props.match.params.channelId).then(() => {
         this.props.getAllMessages(this.props.match.params.channelId).then(() => {
-          // messageListDiv = document.getElementById("message-list");
           messageListDiv.scrollTop = messageListDiv.scrollHeight;
         });
       });
@@ -51,9 +43,6 @@ class MessageList extends React.Component {
         });
       });
     }
-
-    // const messageListDiv = document.getElementById("message-list");
-    // messageListDiv.scrollTop = messageListDiv.scrollHeight;
   }
 
   createListItems() {

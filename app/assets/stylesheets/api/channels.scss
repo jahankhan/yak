@@ -1,11 +1,6 @@
-// Place all the styles related to the api/channels controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
 .channel-main {
   display: flex;
   background-color: #f9f9f9;
-  // min-height: 800px;
   height: calc(100vh - 200px);
   position: relative;
   padding-top: 70px;
@@ -14,7 +9,6 @@
 
 .channel-item-form-container {
   text-align: center;
-  // border-bottom: 1px solid gray;
   font-family: Verdana, Geneva, sans-serif;
   font-size: 14px;
   width: calc(100% - 14px);
@@ -24,7 +18,6 @@
   padding-left: calc(12px - 1px);
   border: 1px solid transparent;
   border-top: 1px solid #e8e8e8;
-  // cursor: pointer;
   line-height: 1.46668;
 }
 
@@ -38,40 +31,24 @@
   margin: 0 auto;
   background-color: #fff;
   width: 100vw;
-  // height: 100%;
   border-radius: 4px;
   overflow-y: auto;
-  // box-shadow:
 }
 
 .channel-list-header-container {
   display: flex;
   align-items: center;
-  // justify-content: center;
   margin-top: 90px;
 }
-
-.channel-list-header-container > button {
-
-  // transition: background-color .3s;
-  // margin-bottom: -5px;
-  // border-bottom: 1px solid gray;
-}
-
 
 .channel-list-header-container > h1 {
   font-size: 34px;
   font-weight: 700;
-  // text-align: center;
   color: #2c2d30;
-
   margin-bottom: 30px;
-  // margin-top: 20px;
-  // margin-left: 10px;
 }
 
 .join-channel-btn {
-  // margin: 20px 0 0 5px;
   margin-right: 12px;
   border-radius: 2px;
   padding: 5px;
@@ -82,7 +59,6 @@
   font-family: Verdana, Geneva, sans-serif;
   font-size: 14px;
   transition: background-color .3s;
-  // margin-bottom: -5px;
   border-bottom: 1px solid gray;
 }
 
@@ -100,17 +76,12 @@
 }
 
 .flex-channel-items {
-
   display: flex;
   margin-top: 10px;
   justify-content: space-between;
   align-items: center;
   padding-bottom: 12px;
   margin-top: 16px;
-
-}
-
-.flex-channel-items {
 
 }
 
@@ -134,9 +105,6 @@
   margin-top: 6px;
   display: flex;
   justify-content: space-between;
-  // flex-direction: column;
-  // justify-content: center;
-  // align-items: center;
 }
 
 .channel-form > input[type="submit"] {
@@ -148,7 +116,6 @@
   border-radius: 4px;
   padding: 6px;
   width: 70%;
-  // margin-bottom: 15px;
 }
 
 .channel-form-checkbox {
@@ -250,12 +217,9 @@
 }
 
 .channel-join-container {
-
   width: 60%;
-  // height: 100vh;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   margin: 0 auto;
 }
 

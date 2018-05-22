@@ -23,7 +23,7 @@ class Api::UsersController < ApplicationController
 
   def update
     @user = User.find_by(id: params[:id])
-    # debugger
+
     if params[:channel_id]
       @user.active_channel = params[:channel_id]
     else

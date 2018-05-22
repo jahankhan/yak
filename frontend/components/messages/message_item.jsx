@@ -6,18 +6,14 @@ class MessageItem extends React.Component {
     super(props);
   }
 
-  // formatTime(time) {
-  //
-  // }
-
   render() {
     let user;
     let avatar;
-    // debugger
+
     if(typeof this.props.users === 'undefined') {
       user = '';
     } else {
-      // debugger
+
       user = this.props.users[this.props.message.author_id];
       avatar = user.avatar_url;
     }
@@ -45,11 +41,5 @@ const mapStateToProps = (state) => {
     users: state.entities.users
   };
 };
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     addUserToMessage: messageId => dispatch(addUserToMessage(messageId))
-//   };
-// };
 
 export default connect(mapStateToProps)(MessageItem);
-//

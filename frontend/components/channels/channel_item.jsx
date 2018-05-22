@@ -6,25 +6,20 @@ import { addUserToChannel, setActiveChannel } from '../../actions/channel_action
 class ChannelItem extends React.Component {
   constructor(props) {
     super(props);
-    // debugger
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(e){
     e.preventDefault();
     this.props.addUserToChannel(this.props.channel.id).then(() => {
-      // console.log(this);
-      // debugger
       this.props.setActiveChannel(this.props.current_user.id, this.props.channel.id).then(() => {
         this.props.history.push(`/channels/${this.props.channel.id}/messages`);
       });
-
     });
-    // console.log(this);
   }
 
   render() {
-    // debugger
+
     return (
       <div className="channel-item-form-container">
         <form onSubmit={this.handleSubmit} className="channel-list-item-form">

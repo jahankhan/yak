@@ -1,36 +1,23 @@
-// Place all the styles related to the api/messages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 .messages-main {
-  // min-height: 100vh;
-  // max-height: 802px;
   max-height: 100vh;
   display: flex;
   font-family: 'Noto Sans', sans-serif;
-  // min-height: 1000px;
 }
 
 .message-list {
-  // background-color: green;
   overflow-y: scroll;
   margin-top: 5px;
   margin-left: 20px;
-  // max-height: 660px;
   height: calc(100vh - 65px - 70px);
   max-width: calc(100vw - 240px);
 }
 
 .message-item {
-  // background-color: #fff;
   display: flex;
   margin-top: 6px;
   margin-bottom: 6px;
   max-width: 100%;
 
-}
-
-.avatar-img {
-  // border-right: 1px solid black;
 }
 
 .message-item-content {
@@ -40,10 +27,6 @@
 
 .message-author {
   margin: 2px 10px 4px 0;
-}
-
-.message-form-input-container {
-  // background-color: yellow;
 }
 
 .messages-content-container {
@@ -63,7 +46,6 @@
 }
 
 .message-footer-container {
-  // width: 95%;
   display: flex;
   justify-content: center;
   margin-left: 10px;
@@ -71,8 +53,6 @@
 }
 
 .message-form-input-container {
-
-  // margin: 0 auto;
   width: 91%;
   border: 2px solid lightgray;
   border-top-right-radius: 4px;
@@ -113,13 +93,14 @@
 }
 
 .avatar-img {
-  // height: 40px;
   height: 100%;
   width: 40px;
 }
 
 .avatar-img > img {
   width: 39px;
+  height: 39px;
+  border-radius: 4px;
 }
 
 .message-author {

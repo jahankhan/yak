@@ -28,7 +28,6 @@ export const receiveErrors = errors => {
 };
 
 export const createChannel = channel => dispatch => {
-  // debugger
   return ChannelAPIUtil.createChannel(channel).then(channelData => {
     return dispatch(receiveCurrentChannel(channelData));
   }, err => {
@@ -45,7 +44,6 @@ export const getAllChannels = () => dispatch => {
 };
 
 export const getChannel = (channelId) => dispatch => {
-  // debugger
   return ChannelAPIUtil.getChannel(channelId).then(channelData => {
     return dispatch(receiveCurrentChannel(channelData));
   }, err => {
@@ -54,31 +52,23 @@ export const getChannel = (channelId) => dispatch => {
 };
 
 export const addUserToChannel = channelId => dispatch => {
-  // debugger
   return ChannelAPIUtil.addUserToChannel(channelId).then((channelData) => {
-    // debugger
-    // return dispatch(getChannel(channelData.channel_id));
   }, err => {
     return dispatch(receiveErrors(err.responseJSON));
   });
 };
 
 export const addOtherUserToChannel = (username, channelId) => dispatch => {
-  // debugger
   return ChannelAPIUtil.addOtherUserToChannel(username, channelId).then((channelData) => {
-    // debugger
-    // return dispatch(getChannel(channelData.channel_id));
   }, err => {
     return dispatch(receiveErrors(err.responseJSON));
   });
 };
 
 export const setActiveChannel = (userId, channelId) => dispatch => {
-  // debugger
   return UserAPIUtil.setActiveChannel(userId, channelId).then((userData) => {
-
     return dispatch(getChannel(userData.users.active_channel));
   }, err => {
-    // return dispatch(receiveErrors(err.responseJSON));
+    return dispatch(receiveErrors(err.responseJSON));
   });
 };

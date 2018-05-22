@@ -27,7 +27,6 @@ class MessageNav extends React.Component {
     const formData = new FormData();
     formData.append("user[avatar]", file);
     this.props.setAvatar(formData, this.props.current_user.id).then(() => {
-      // this.setState({imageFile: null, imageUrl: null});
     });
   }
 
@@ -47,7 +46,6 @@ class MessageNav extends React.Component {
     if(typeof this.props.channels === 'undefined' || typeof this.props.channels === 'undefined'){
       return '';
     } else {
-      // debugger
       return this.props.channels.map(channel => {
         if(typeof channel === 'undefined') return;
         return <NavLink key={channel.id} to={`/channels/${channel.id}/messages`} activeClassName="selected" className="channel-menu-item-link"><span key={channel.id} className="channel-menu-item"># {channel.title}</span></NavLink>;
@@ -63,7 +61,6 @@ class MessageNav extends React.Component {
     if(typeof this.props.dms === 'undefined'){
       return '';
     } else {
-      // debugger
       return this.props.dms.map(dm => {
         if(typeof dm === 'undefined') return;
         if (typeof dm.userIds === 'undefined') return '';
@@ -108,18 +105,7 @@ class MessageNav extends React.Component {
     }
   }
 
-  // componentDidMount() {
-  //   // debugger
-  //   // this.props.getChannel(this)
-  // }
-// {this.renderChannels()}
-// <span className="channel-menu-item"># 2018-03-19-nyc</span>
-// <span className="channel-menu-item"># general</span>
-// <span className="dm-menu-item">slackbot</span>
-// <span className="dm-menu-item">Jahan Khan</span>
-// <span className="dm-menu-item">Guest User</span>
   render() {
-    // debugger
     return (
       <nav className="message-navbar">
         <div className="user-menu" onClick={this.toggleModal}>
@@ -182,10 +168,9 @@ class MessageNav extends React.Component {
     );
   }
 }
+
 const mapStateToProps = (state, ownProps) => {
-  // debugger
   const user = state.entities.users[state.session.id] || {};
-  // debugger
   return {
     user,
     current_user: state.session,

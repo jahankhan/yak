@@ -17,7 +17,6 @@ json.users do
     json.set! user.id do
       json.extract! user, :id, :username
       json.avatar_url asset_path(user.avatar.url)
-      # json.channelIds user.channel_ids
     end
   end
   current_user.channels.where(dm: true).each do |channel|
@@ -25,7 +24,6 @@ json.users do
       json.set! user.id do
         json.extract! user, :id, :username
         json.avatar_url asset_path(user.avatar.url)
-        # json.channelIds user.channel_ids
       end
     end
   end

@@ -41,15 +41,12 @@ class MessageChannelNav extends React.Component {
   }
 
   render() {
-    // debugger
+
     return (
       <header className="message-channel-navbar">
         <div className="message-channel-navbar-left">
           <button className="channel-navbar-btn">{this.renderChannel()}</button>
           <div className="channel-navbar-small-btns">
-            <span className="channel-small-items">s</span>
-            <span className="channel-small-items">numU</span>
-            <span className="channel-small-items">pin</span>
             <span className="channel-small-items">{this.renderTopic()}</span>
           </div>
         </div>
@@ -64,7 +61,7 @@ class MessageChannelNav extends React.Component {
   }
 }
 const mapStateToProps = (state, ownProps) => {
-  // debugger
+
   return {
     channel: state.entities.channels[ownProps.match.params.channelId],
     users: state.entities.users

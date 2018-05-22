@@ -13,7 +13,7 @@ class ChannelPage extends React.Component {
   }
 
   getListOrForm(){
-    // debugger
+
     if(this.props.history.location.pathname === '/channels') {
       return <ChannelList />;
     } else {
@@ -25,7 +25,6 @@ class ChannelPage extends React.Component {
     if (typeof this.props.currentUser === 'undefined' || typeof this.props.currentUser.active_channel === 'undefined') {
       return ;
     } else {
-      // debugger
       this.props.history.push(`/channels/${this.props.currentUser.active_channel}/messages`);
     }
   }
@@ -35,9 +34,7 @@ class ChannelPage extends React.Component {
       <div>
         <button className="channel-back-btn" onClick={this.handleBack}>x</button>
         <LoginNav />
-
         <main className="channel-main">
-
           {this.getListOrForm()}
         </main>
       </div>
@@ -50,11 +47,5 @@ const mapStateToProps = (state, ownProps) => {
     currentUser: state.entities.users[state.session.id]
   };
 };
-//
-// const mapDispatchToProps = dispatch => {
-//   return {
-//
-//   };
-// };
 
 export default withRouter(connect(mapStateToProps)(ChannelPage));

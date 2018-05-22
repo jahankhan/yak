@@ -1,13 +1,9 @@
 class Api::ChannelUsersController < ApplicationController
-  # def index
-  #   debugger
-  #   @users = User.all.where('channel_id = ?', params[:channel_id])
-  # end
 
   def create
     @channel_user = ChannelUser.new(channel_user_params)
     if params[:channel_user][:username]
-      # debugger
+
       user = User.find_by(username: params[:channel_user][:username])
       @channel_user[:user_id] = user.id
     else

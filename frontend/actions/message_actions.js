@@ -28,7 +28,6 @@ export const receiveErrors = errors => {
 
 export const createMessage = message => dispatch => {
   return MessageAPIUtil.createMessage(message).then(messageData => {
-    // return dispatch(receiveMessage(messageData));
     return ;
   }, err => {
     return dispatch(receiveErrors(err.responseJSON));
@@ -36,7 +35,6 @@ export const createMessage = message => dispatch => {
 };
 
 export const getAllMessages = channelId => dispatch => {
-  // debugger
   return MessageAPIUtil.getAllMessages(channelId).then(messages => {
     return dispatch(receiveMessages(messages));
   }, err => {

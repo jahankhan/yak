@@ -22,10 +22,6 @@ class GetStartedForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    // debugger
-    // debugger
-    // const user = Object.assign({}, this.state);
-    // this.props.history.location.search = this.state.email;
     window.scrollTo(0,0);
     this.props.history.push({
       pathname: '/signup',
@@ -33,10 +29,6 @@ class GetStartedForm extends React.Component {
     });
   }
 
-  // <Redirect to={{
-  //     pathname: '/login',
-  //     state: { email: this.state.email }
-  //   }}  / > ;
   render() {
     return (
       <div className="get-started-form-container">
@@ -57,19 +49,3 @@ class GetStartedForm extends React.Component {
 }
 
 export default withRouter(GetStartedForm);
-
-// const mapStateToProps = ({ errors }) => {
-//   return {
-//     errors: errors.session,
-//     formType: 'signup',
-//     navLink: <Link to="/signup">sign up instead</Link>,
-//   };
-// };
-//
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     processForm: user => dispatch(login(user)),
-//   };
-// };
-//
-// export default connect(mapStateToProps, mapDispatchToProps)(GetStartedForm);

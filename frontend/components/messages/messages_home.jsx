@@ -9,6 +9,7 @@ import MessageComposer from './message_composer';
 import { getChannel, setActiveChannel } from '../../actions/channel_actions';
 import { getUser } from '../../actions/session_actions';
 import { receiveMessage } from '../../actions/message_actions';
+import AuthRoute from '../../util/route_util';
 
 class MessagePage extends React.Component {
   constructor(props) {
@@ -16,22 +17,21 @@ class MessagePage extends React.Component {
   }
 
   componentWillMount() {
-    // debugger
+
     const that = this;
     if (typeof App !== 'undefined'){
-      // debugger
       App.room = App.cable.subscriptions.create("RoomChannel", {
           connected: function() {},
           disconnected: function() {},
           received: function(data) {
-            // debugger
+
             that.props.receiveMessage(JSON.parse(data['message']));
             const messageListDiv = document.getElementById("message-list");
             messageListDiv.scrollTop = messageListDiv.scrollHeight;
             return;
           },
           speak: function(message) {
-            // debugger
+
             return this.perform('speak', {
               message: message
             });
@@ -42,17 +42,25 @@ class MessagePage extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (this.props.match.params.channelId !== nextProps.match.params.channelId) {
+      if (this.props.currentUser.id !== this.props.user.id) {
+        this.props.history.push('/login');
+      }
       this.props.setActiveChannel(this.props.user.id, nextProps.match.params.channelId).then((data) => {
         this.props.getUser(this.props.user.id).then(() => {
           const keys = Object.keys(data.currentChannel);
           const currentChannel = keys[keys.length-1];
-          this.props.getChannel(currentChannel);
         });
       });
     }
   }
 
   render() {
+
+    if (typeof this.props.errors !== 'undefined' && typeof this.props.errors.channels !== 'undefined' && typeof this.props.errors.channels.errors !== 'undefined') {
+      if(this.props.errors.channels.errors.length > 0){
+        this.props.history.push('/');
+      }
+    }
     return (
       <main className="messages-main">
         <MessageNav />
@@ -69,12 +77,14 @@ class MessagePage extends React.Component {
 const mapStateToProps = (state, ownProps) => {
   const user = state.entities.users[state.session.id] || {};
   return {
-    user
+    user,
+    currentUser: state.session,
+    errors: state.errors
   };
 };
 
 const mapDispatchToProps = dispatch => {
-  // debugger
+
   return {
     getChannel: channelId => dispatch(getChannel(channelId)),
     setActiveChannel: (userId, channelId) => dispatch(setActiveChannel(userId, channelId)),
@@ -82,7 +92,5 @@ const mapDispatchToProps = dispatch => {
     receiveMessage: message => dispatch(receiveMessage(message))
   };
 };
-
-
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MessagePage));

@@ -19,13 +19,6 @@ export const createChannel = (channel) => {
     data: { channel }
   });
 };
-//
-// export const createDmChannel = (channel) => {
-//   return $.ajax({
-//     method: 'POST',
-//     url
-//   })
-// }
 
 export const addOtherUserToChannel = (username, channelId) => {
   return $.ajax({
@@ -42,5 +35,3 @@ export const addUserToChannel = (channelId) => {
     data: {channel_user: { channel_id: channelId }}
   });
 };
-
-// export const getUserChannels

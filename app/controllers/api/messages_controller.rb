@@ -8,7 +8,7 @@ class Api::MessagesController < ApplicationController
   end
 
   def create
-    # debugger
+    
     @message = Message.new(message_params)
     if @message.save
       # ActionCable.server.broadcast 'room_channel', body: @message.body, username: @message.user.username

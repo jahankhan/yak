@@ -1,6 +1,5 @@
 class User < ApplicationRecord
   validates :username, :password_digest, :session_token, :email, presence: true, uniqueness: true
-  # validates :avatar_url, presence: true
   validates :password, length: { minimum: 6, allow_nil: true }
 
   has_attached_file :avatar, default_url: "missing.png"
@@ -42,6 +41,4 @@ class User < ApplicationRecord
   def ensure_session_token
     self.session_token ||= User.generate_session_token
   end
-
-
 end

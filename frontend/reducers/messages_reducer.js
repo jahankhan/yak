@@ -8,12 +8,12 @@ import {
 
 const messagesReducer = (state = {}, action) => {
   Object.freeze(state);
-  // debugger
+  
   switch(action.type) {
     case RECEIVE_MESSAGE:
       return merge({}, state, { [action.message.id]: action.message });
     case RECEIVE_MESSAGES:
-      // debugger
+      
       return action.messages;
     default:
       return state;
