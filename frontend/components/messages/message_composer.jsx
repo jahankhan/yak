@@ -48,10 +48,19 @@ class MessageComposer extends React.Component {
     e.preventDefault();
     const file = e.currentTarget.files[0];
     const formData = new FormData();
-    formData.append("user[avatar]", file);
-    this.props.setAvatar(formData, this.props.current_user.id).then(() => {
-      this.setState({imageFile: null, imageUrl: null});
-    });
+    formData.append("message[image]", file);
+    formData.append("message[body]", 'placeholder');
+    formData.append("message[author_id]", this.props.current_user.id);
+    formData.append("message[channel_id]", this.props.match.params.channelId);
+    // const message = {
+    //   body: 'placeholder',
+    //   author_id: this.props.current_user.id,
+    //   channel_id: this.props.match.params.channelId,
+    //   image: file
+    // };
+    // App.room.speak(message);
+    this.props.createMessage(formData)
+    this.setState({imageFile: null, imageUrl: null});
   }
 
   handleSubmitAvatar(e) {
@@ -62,7 +71,7 @@ class MessageComposer extends React.Component {
   }
 
   callFileInput() {
-    // document.getElementById("file-attacher-btn").click();
+    document.getElementById("file-attacher-btn-img").click();
   }
 
   componentDidMount() {
@@ -88,7 +97,7 @@ class MessageComposer extends React.Component {
       <footer className="message-footer">
         <div className="message-footer-container">
           <button className="message-attachment-btn" onClick={this.callFileInput}>+</button>
-          <input onChange={this.updateFile} type="file" className="file-attacher" id="file-attacher-btn"></input>
+          <input onChange={this.updateFile} type="file" className="file-attacher" id="file-attacher-btn-img"></input>
           <div className="message-form-input-container">
             <form onSubmit={this.handleSubmit} className="message-create-form">
               <input onChange={this.updateBody} className="message-form-input" type="text" placeholder={`Message ${channelTitle}`} value={this.state.body}></input>

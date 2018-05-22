@@ -6,6 +6,15 @@ class MessageItem extends React.Component {
     super(props);
   }
 
+  renderContent() {
+    if(typeof this.props.message.image !== 'undefined' && this.props.message.image !==
+"/images/original/missing.png") {
+      return <img src={this.props.message.image} />;
+    } else {
+      return <span className="message-body">{this.props.message.body}</span>;
+    }
+  }
+
   render() {
     let user;
     let avatar;
@@ -17,6 +26,8 @@ class MessageItem extends React.Component {
       user = this.props.users[this.props.message.author_id];
       avatar = user.avatar_url;
     }
+
+    if(this.props.message.image )
     return (
       <div className="message-item">
         <div className="avatar-img">
@@ -28,7 +39,8 @@ class MessageItem extends React.Component {
             <span className="message-timestamp">{this.props.message.created_at}</span>
           </div>
           <div className="message-body-container">
-            <span className="message-body">{this.props.message.body}</span>
+
+            {this.renderContent()}
           </div>
         </div>
       </div>
