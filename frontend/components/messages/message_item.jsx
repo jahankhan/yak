@@ -7,9 +7,9 @@ class MessageItem extends React.Component {
   }
 
   renderContent() {
-    if(typeof this.props.message.image !== 'undefined' && this.props.message.image !==
-"/images/original/missing.png") {
-      return <img src={this.props.message.image} />;
+    if(typeof this.props.message.image !== 'undefined' &&
+    this.props.message.image !== "/images/original/missing.png") {
+      return <img className="message-image" src={this.props.message.image} />;
     } else {
       return <span className="message-body">{this.props.message.body}</span>;
     }
