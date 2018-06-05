@@ -59,7 +59,7 @@ class MessageComposer extends React.Component {
     //   image: file
     // };
     // App.room.speak(message);
-    this.props.createMessage(formData)
+    this.props.createMessage(formData);
     this.setState({imageFile: null, imageUrl: null});
   }
 

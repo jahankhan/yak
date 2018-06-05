@@ -78,7 +78,6 @@ class MessageNav extends React.Component {
   }
 
   toggleModal() {
-    console.log("click");
     const modal = document.getElementById('logout-modal');
     if (this.state.modalOpen === false) {
       this.setState({modalOpen: true}, () => {
@@ -92,7 +91,6 @@ class MessageNav extends React.Component {
   }
 
   togglepModal() {
-    console.log("pclick");
     const pmodal = document.getElementById('profile-modal');
     if (this.state.pmodalOpen === false) {
       this.setState({pmodalOpen: true}, () => {

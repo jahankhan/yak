@@ -34,7 +34,8 @@ class MessageChannelNav extends React.Component {
       return '';
     } else if (this.props.channel.topic === '') {
       // return 'Add a topic';
-      return <button onClick={this.handleTopicChange}>Add a topic</button>;
+      // return <button onClick={this.handleTopicChange}>Add a topic</button>;
+      return '';
     } else {
       return this.props.channel.topic;
     }
@@ -52,26 +53,20 @@ class MessageChannelNav extends React.Component {
         </div>
         <div className="message-channel-navbar-right">
           <div className="search-container">
-            <input type="text" placeholder="Search"></input>
           </div>
         </div>
       </header>
 
     );
   }
+  // <input type="text" placeholder="Search"></input>
 }
 const mapStateToProps = (state, ownProps) => {
-
   return {
     channel: state.entities.channels[ownProps.match.params.channelId],
     users: state.entities.users
   };
 };
-//
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     addUserToMessage: messageId => dispatch(addUserToMessage(messageId))
-//   };
-// };
+
 
 export default withRouter(connect(mapStateToProps)(MessageChannelNav));
