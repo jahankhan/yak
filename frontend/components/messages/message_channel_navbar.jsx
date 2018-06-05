@@ -52,14 +52,16 @@ class MessageChannelNav extends React.Component {
           </div>
         </div>
         <div className="message-channel-navbar-right">
-          <div className="search-container">
-          </div>
+
         </div>
       </header>
 
     );
   }
-  // <input type="text" placeholder="Search"></input>
+  // <div className="search-container">
+  //   <input type="text" placeholder="Search"></input>
+  // </div>
+
 }
 const mapStateToProps = (state, ownProps) => {
   return {
