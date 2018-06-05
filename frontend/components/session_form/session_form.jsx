@@ -134,7 +134,7 @@ class SessionForm extends React.Component {
     return (
       <div className="login-form-container">
         <form onSubmit={this.handleSubmit} className="login-form-box">
-          <h2>Sign {this.getHeader(this.props.formType)} to App Academy</h2>
+          <h2>Sign {this.getHeader(this.props.formType)}</h2>
           {this.renderErrors()}
           <h6>{this.getPlaceholderText(this.props.formType)}</h6>
           <div className="login-form">
