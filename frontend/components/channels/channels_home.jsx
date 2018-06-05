@@ -22,7 +22,8 @@ class ChannelPage extends React.Component {
   }
 
   handleBack() {
-    if (typeof this.props.currentUser === 'undefined' || typeof this.props.currentUser.active_channel === 'undefined') {
+    if (typeof this.props.currentUser === 'undefined' || typeof this.props.currentUser.active_channel === 'undefined'
+        || this.props.currentUser.active_channel === null) {
       return ;
     } else {
       this.props.history.push(`/channels/${this.props.currentUser.active_channel}/messages`);
